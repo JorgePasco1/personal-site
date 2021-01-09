@@ -1,3 +1,7 @@
+## Next Typescript App
+
+This is a repository to learn TypeScript by building a NextJs app with it.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
