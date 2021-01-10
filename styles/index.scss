@@ -1,0 +1,90 @@
+@import './variables.scss';
+
+.hero {
+  display: flex;
+}
+
+.left-section {
+  width: 70vw;
+  height: 100vh;
+  background: url('/assets/vertical-wave.svg') no-repeat;
+  background-position: right;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__tagline {
+    margin-left: -6rem;
+    width: 50%;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 3vw;
+    color: $mint-cream;
+    line-height: 1.2;
+  }
+}
+
+.right-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8rem 0;
+
+  .nav-bar {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    &__item {
+      font-family: 'Montserrat';
+      font-weight: 600;
+      font-size: 2rem;
+      color: $dark-purple;
+
+      &.active {
+        font-weight: 800;
+        color: $red-crayola;
+      }
+    }
+  }
+
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat';
+    flex-grow: 1;
+
+    img {
+      width: 50%;
+      height: auto;
+      border-radius: 50%;
+    }
+
+    &__name {
+      font-weight: 600;
+      font-size: 4rem;
+      letter-spacing: -1px;
+    }
+
+    &__title {
+      font-size: 2rem;
+    }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 2.5rem;
+      height: auto;
+    }
+
+    img:first-child {
+      margin-right: 3rem;
+    }
+  }
+}

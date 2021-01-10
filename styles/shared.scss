@@ -1,0 +1,14 @@
+@import './variables.scss';
+
+.main-red {
+  color: $red-crayola;
+}
+
+.main-yellow {
+  color: $naples-yellow;
+}
+
+body {
+  background-color: $mint-cream;
+  line-height: 1;
+}
