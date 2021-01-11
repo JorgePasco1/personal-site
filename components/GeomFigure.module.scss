@@ -1,0 +1,49 @@
+@import '../styles/variables.scss';
+
+.circle {
+  border-radius: 50%;
+}
+
+.square {
+  border-radius: 20%;
+}
+
+.red {
+  background-color: $red-crayola;
+}
+
+.cream {
+  background-color: $mint-cream;
+}
+
+.purple {
+  background-color: $dark-purple;
+}
+
+.green {
+  background-color: $dark-green;
+}
+
+.yellow {
+  background-color: $naples-yellow;
+}
+
+.red-svg {
+  fill: $red-crayola;
+}
+
+.cream-svg {
+  fill: $mint-cream;
+}
+
+.purple-svg {
+  fill: $dark-purple;
+}
+
+.green-svg {
+  fill: $dark-green;
+}
+
+.yellow-svg {
+  fill: $naples-yellow;
+}
