@@ -5,6 +5,12 @@ type GeomFigureProps = {
   size: string;
   color: string;
   rotation?: string;
+  position: {
+    left?: string;
+    top?: string;
+    right?: string;
+    bottom?: string;
+  };
 };
 
 const GeomFigure = ({
@@ -12,7 +18,15 @@ const GeomFigure = ({
   size,
   color,
   rotation = null,
+  position,
 }: GeomFigureProps) => {
+  const figureContainerStyles = {
+    position: 'absolute' as 'absolute',
+    ...position,
+    transform: rotation && `rotate(${rotation})`,
+    zIndex: 1,
+  };
+
   const figureStyles = {
     width: size,
     height: size,
@@ -30,10 +44,6 @@ const GeomFigure = ({
       </g>
     </svg>
   );
-
-  const figureContainerStyles = {
-    transform: rotation && `rotate(${rotation})`,
-  };
 
   const figureClassName =
     type !== 'triangle' ? `${styles[type]} ${styles[color]}` : null;

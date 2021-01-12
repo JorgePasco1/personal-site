@@ -1,7 +1,9 @@
 import Head from 'next/head';
 import { Icon } from 'semantic-ui-react';
-
-import GeomFigure from '../components/GeomFigure';
+import {
+  LeftSectionFigures,
+  RightSectionFigures,
+} from '../components/SectionFigures';
 
 const Home = () => (
   <>
@@ -17,11 +19,10 @@ const Home = () => (
           <span className="main-red">engineering</span>.
         </div>
         <Icon name="angle down" className="down-indicator bounce" size="huge" />
-        <GeomFigure type="circle" size="1rem" color="red"/>
-        <GeomFigure type="square" size="2rem" color="yellow" rotation="45deg"/>
-        <GeomFigure type="triangle" size="5rem" color="yellow" rotation="90deg"/>
+        <LeftSectionFigures />
       </div>
       <div className="right-section">
+        <RightSectionFigures />
         <div className="right-section__nav-bar nav-bar">
           <a href="/" className="nav-bar__item active">
             About
