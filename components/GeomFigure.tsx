@@ -5,6 +5,10 @@ type GeomFigureProps = {
   size: string;
   color: string;
   rotation?: string;
+  animation?: {
+    direction: 'clock' | 'counter';
+    time: number;
+  };
   position: {
     left?: string;
     top?: string;
@@ -19,12 +23,19 @@ const GeomFigure = ({
   color,
   rotation = null,
   position,
+  animation = null,
 }: GeomFigureProps) => {
+  console.log(animation);
   const figureContainerStyles = {
     position: 'absolute' as 'absolute',
     ...position,
     transform: rotation && `rotate(${rotation})`,
     zIndex: 1,
+    animation:
+      animation &&
+      `${
+        animation.direction === 'clock' ? 'clockRotation' : 'invertRotation'
+      } ${animation.time * 100}s infinite linear`,
   };
 
   const figureStyles = {
@@ -48,9 +59,14 @@ const GeomFigure = ({
   const figureClassName =
     type !== 'triangle' ? `${styles[type]} ${styles[color]}` : null;
 
+  const rotationClass = animation && `rotation-${animation}`;
+
   return (
-    <div className="figure-container" style={figureContainerStyles}>
-      <div className={figureClassName} style={figureStyles}>
+    <div
+      className={rotationClass && styles[rotationClass]}
+      style={figureContainerStyles}
+    >
+      <div className={`${figureClassName} squash-animation`} style={figureStyles}>
         {type === 'triangle' && <TriangleSvg />}
       </div>
     </div>

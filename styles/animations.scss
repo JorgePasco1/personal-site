@@ -1,0 +1,97 @@
+// Animation taken from : https://css-tricks.com/making-css-animations-feel-natural/
+.bounce {
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: bounce-1;
+  animation-timing-function: ease;
+  animation-delay: 2.5s;
+}
+
+@keyframes bounce-1 {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-10px);
+  }
+  50% {
+    transform: scale(1, 1) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(-4px);
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+
+@keyframes squash {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  30% {
+    transform: scale(1.1, 0.99);
+  }
+  70% {
+    transform: scale(0.99, 1.1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.squash-animation {
+  animation: squash 10s infinite linear;
+}
+
+@keyframes clockRotation {
+  to {
+    transform: rotate(36000deg);
+  }
+}
+
+@keyframes invertRotation {
+  to {
+    transform: rotate(-36000deg);
+  }
+}
+
+.fadein-animation-left {
+  opacity: 0;
+  animation: fadeInLeft .5s ease-in-out forwards;
+  animation-delay: .5s;
+}
+
+@keyframes fadeInLeft {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.fadein-animation-top {
+  opacity: 0;
+  animation: fadeInTop .5s ease-in-out forwards;
+  animation-delay: 1s;
+}
+
+@keyframes fadeInTop {
+  0% {
+    transform: translatey(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

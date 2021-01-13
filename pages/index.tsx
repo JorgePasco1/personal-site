@@ -13,7 +13,7 @@ const Home = () => (
     </Head>
     <div className="hero">
       <div className="left-section">
-        <div className="left-section__tagline">
+        <div className="left-section__tagline fadein-animation-left">
           I strive to create unique digital products, through{' '}
           <span className="main-yellow">creativity</span> and{' '}
           <span className="main-red">engineering</span>.
@@ -23,7 +23,7 @@ const Home = () => (
       </div>
       <div className="right-section">
         <RightSectionFigures />
-        <div className="right-section__nav-bar nav-bar">
+        <div className="right-section__nav-bar nav-bar fadein-animation-top">
           <a href="/" className="nav-bar__item active">
             About
           </a>
@@ -34,12 +34,12 @@ const Home = () => (
             Blog
           </a>
         </div>
-        <div className="right-section__profile profile">
+        <div className="right-section__profile profile fadein-animation-top">
           <img src="/assets/profile.png"></img>
           <div className="profile__name">Jorge Pasco</div>
           <div className="profile__title">Software Engineer</div>
         </div>
-        <div className="right_section__footer footer">
+        <div className="right_section__footer footer fadein-animation-top">
           <a href="https://www.linkedin.com/in/jorgepasco1/" target="_blank">
             <img src="/assets/logos/linkedin.svg" alt="LinkedIn Logo" />
           </a>
