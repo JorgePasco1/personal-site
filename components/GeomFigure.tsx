@@ -25,7 +25,6 @@ const GeomFigure = ({
   position,
   animation = null,
 }: GeomFigureProps) => {
-  console.log(animation);
   const figureContainerStyles = {
     position: 'absolute' as 'absolute',
     ...position,
