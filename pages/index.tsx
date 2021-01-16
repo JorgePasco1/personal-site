@@ -4,8 +4,14 @@ import {
   LeftSectionFigures,
   RightSectionFigures,
 } from '../components/SectionFigures';
+import Card from '../components/Card';
 
-const Home = () => {
+import { getRecentProjects } from '../utils/gitHubAdapter';
+import { getImageLink } from '../utils/s3Adapter';
+
+const Home = ({ projects }) => {
+  const project = projects[0]
+  console.log(project)
   return (
     <>
       <Head>
@@ -54,11 +60,47 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="section2">
-        Section 2
-      </div>
+      <main>
+        <section className="introduction">
+          <h1>Hello World!</h1>
+          <p>
+            I’m Jorge Pasco, a software engineer based in Peru 🇵🇪. I currently
+            work at Makrwatch, where I focus on backend services to help the
+            company keep up with its exponential growth. I have experience as a
+            front-end developer, and the technologies I love and use the most
+            are Python🐍/Flask and JavaScript/React ⚛️.
+          </p>
+          <p>
+            I'm self-taught and passionate about learning new technologies and
+            solving problems. You can take a look a my resume 🙌. Reach out to
+            me by filling out this form, or email me at jorgepascosoto@gmail.com
+            📩
+          </p>
+        </section>
+
+        <section className="projects">
+          <h2>Latest Projects</h2>
+
+          <Card title={project.name} description={project.description} link={project.html_url} imageLink={project.imageLink} width="30rem"/>
+        </section>
+      </main>
     </>
   );
 };
+
+export async function getStaticProps() {
+  let projects = await getRecentProjects();
+  projects = await Promise.all(
+    projects.map(async (project) => {
+      const imageLink = await getImageLink(project.name);
+      return {
+        ...project,
+        imageLink,
+      };
+    })
+  );
+
+  return { props: { projects } };
+}
 
 export default Home;

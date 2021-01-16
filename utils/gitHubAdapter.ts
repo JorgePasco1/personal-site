@@ -1,8 +1,15 @@
 import axios from 'axios';
 
 const BASE_GITHUB_API_URL = 'https://api.github.com';
+const GH_ACCESS_TOKEN = process.env.GH_ACCESS_TOKEN;
 
-const extractProjectsUrls = (text: string) => {
+type ProjectInfo = {
+  html_url: string;
+  description: string;
+  name: string;
+};
+
+const extractProjectsUrls = (text: string): Array<string> => {
   const recentProjects = text
     .split('\n---\n\n')[0]
     .split('Last projects:\n  ')[1];
@@ -14,17 +21,48 @@ const extractProjectsUrls = (text: string) => {
     links.push(matches[2].slice(1, -1));
   } while ((matches = markDownLinkPattern.exec(recentProjects)));
 
-  return links;
+  return links.map((link) => link.split('https://github.com/')[1]);
 };
 
-export const getRecentProjects = async () => {
+const getRecentProjectsUrls = async (): Promise<Array<string>> => {
   const profileReadmeUrl = `${BASE_GITHUB_API_URL}/repos/jorgepasco1/jorgepasco1/contents/README.md`;
 
-  const response = await axios.get(profileReadmeUrl);
+  const response = await axios.get(profileReadmeUrl, {
+    headers: {
+      Authorization: `Bearer ${GH_ACCESS_TOKEN}`,
+    },
+  });
   const data = await response.data;
   const content = data.content;
   const decoded = Buffer.from(content, 'base64').toString('utf-8');
 
   const projectUrls = extractProjectsUrls(decoded);
   return projectUrls;
+};
+
+const getProjectInfo = async (repoUrl: string): Promise<ProjectInfo> => {
+  const response = await axios.get(repoUrl, {
+    headers: {
+      Authorization: `Bearer ${GH_ACCESS_TOKEN}`,
+    },
+  });
+  const data = await response.data;
+  const { html_url, description, name } = data;
+  return { html_url, description, name };
+};
+
+export const getRecentProjects = async (): Promise<Array<ProjectInfo>> => {
+  const projectNames = await getRecentProjectsUrls();
+
+  const apiRepoUrls = projectNames.map(
+    (name) => `${BASE_GITHUB_API_URL}/repos/${name}`
+  );
+
+  const result = await Promise.all(
+    apiRepoUrls.map(async (url) => {
+      const info = await getProjectInfo(url);
+      return info;
+    })
+  );
+  return result;
 };
