@@ -10,8 +10,8 @@ import { getRecentProjects } from '../utils/gitHubAdapter';
 import { getImageLink } from '../utils/s3Adapter';
 
 const Home = ({ projects }) => {
-  const project = projects[0]
-  console.log(project)
+  const project = projects[0];
+  console.log(project);
   return (
     <>
       <Head>
@@ -81,8 +81,33 @@ const Home = ({ projects }) => {
         <section className="projects">
           <h2>Latest Projects</h2>
 
-          <Card title={project.name} description={project.description} link={project.html_url} imageLink={project.imageLink} width="30rem"/>
+          <div className="cards">
+            {projects.map((project) => (
+              <Card
+                title={project.name}
+                description={project.description}
+                link={project.html_url}
+                imageLink={project.imageLink}
+                width="20vw"
+              />
+            ))}
+            <a
+              href="https://www.github.com/jorgepasco1"
+              className="cards__see_all"
+            >
+              See all 👉
+            </a>
+          </div>
         </section>
+        <footer>
+          <div>Coded with ❤️ by Jorge Pasco</div>
+          <a href="https://www.linkedin.com/in/jorgepasco1/" target="_blank">
+            <img src="/assets/logos/linkedin.svg" alt="LinkedIn Logo" />
+          </a>
+          <a href="https://www.github.com/jorgepasco1" target="_blank">
+            <img src="/assets/logos/github.svg" alt="Github Logo" />
+          </a>
+        </footer>
       </main>
     </>
   );

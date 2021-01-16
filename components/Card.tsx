@@ -12,11 +12,11 @@ const Card = ({ title, description, link, imageLink, width }: CardProps) => {
   const containerStyles = { width };
   return (
     <div className={styles.card} style={containerStyles}>
-      <a href={link}>
+      <a href={link} className={styles.card__image_container}>
         <img src={imageLink || 'https://source.unsplash.com/random/800x500'} className={styles.card__image}/>
       </a>
-      <a href={link}>{title}</a>
-      <div>{description}</div>
+      <a href={link} className={styles.card__title}>{title}</a>
+      <div className={styles.card__description}>{description}</div>
     </div>
   );
 };

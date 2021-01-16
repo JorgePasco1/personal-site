@@ -153,6 +153,55 @@ main {
     h2 {
       font-family: 'Montserrat';
       font-size: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+
+      * {
+        margin-right: 4rem;
+        margin-bottom: 1rem;
+        width: 100%;
+      }
+
+      &__see_all {
+        width: fit-content;
+        margin-right: 0;
+        align-self: center;
+        color: $red-crayola;
+        font-weight: 700;
+        font-family: 'Montserrat';
+        transition: color 0.2s;
+      }
+
+      &__see_all:hover {
+        color: #d30f36;
+      }
+    }
+  }
+
+  footer {
+    min-height: 8vh;
+    background-color: $dark-green;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    margin-left: -10vw;
+    display: flex;
+    color: $mint-cream;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    padding: 3vh 0;
+
+    img {
+      width: 1.5rem;
+      height: auto;
+      filter: invert(100%) sepia(0%) saturate(7460%) hue-rotate(286deg) brightness(112%) contrast(96%);
+      margin-left: 1rem;
     }
   }
 }
