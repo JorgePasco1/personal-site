@@ -1,17 +1,20 @@
 import Head from 'next/head';
+import { useState } from 'react';
+
 import { Icon } from 'semantic-ui-react';
+
 import {
   LeftSectionFigures,
   RightSectionFigures,
 } from '../components/SectionFigures';
 import Card from '../components/Card';
+import ContactModal from '../components/ContactModal';
 
 import { getRecentProjects } from '../utils/gitHubAdapter';
 import { getImageLink } from '../utils/s3Adapter';
 
 const Home = ({ projects }) => {
-  const project = projects[0];
-  console.log(project);
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <>
       <Head>
@@ -38,7 +41,10 @@ const Home = ({ projects }) => {
             <a href="/" className="nav-bar__item active">
               About
             </a>
-            <a href="/work" className="nav-bar__item">
+            <a
+              href="https://github.com/JorgePasco1/project-tree"
+              className="nav-bar__item"
+            >
               Work
             </a>
             <a href="/blog" className="nav-bar__item">
@@ -68,13 +74,26 @@ const Home = ({ projects }) => {
             work at Makrwatch, where I focus on backend services to help the
             company keep up with its exponential growth. I have experience as a
             front-end developer, and the technologies I love and use the most
-            are Python🐍/Flask and JavaScript/React ⚛️.
+            are Python🐍/Flask and JavaScript/React ⚛️. I'm also a Data
+            Science/Machine Learning enthusiast, currently weorking on improving
+            my skills 💪.
           </p>
           <p>
             I'm self-taught and passionate about learning new technologies and
-            solving problems. You can take a look a my resume 🙌. Reach out to
-            me by filling out this form, or email me at jorgepascosoto@gmail.com
-            📩
+            solving problems. You can take a look a{' '}
+            <a href="/assets/JorgePasco_Resume.pdf">my resume</a> 🙌. Reach out
+            to me by filling out{' '}
+            <ContactModal
+              triggerButton={
+                <button
+                  className="unstyled-button"
+                  onClick={() => setModalOpen(true)}
+                >
+                  this form
+                </button>
+              }
+            />
+            , or email me at jorgepascosoto@gmail.com 📩
           </p>
         </section>
 
@@ -84,6 +103,7 @@ const Home = ({ projects }) => {
           <div className="cards">
             {projects.map((project) => (
               <Card
+                key={project.name}
                 title={project.name}
                 description={project.description}
                 link={project.html_url}
@@ -92,7 +112,7 @@ const Home = ({ projects }) => {
               />
             ))}
             <a
-              href="https://www.github.com/jorgepasco1"
+              href="https://github.com/JorgePasco1/project-tree"
               className="cards__see_all"
             >
               See all 👉
