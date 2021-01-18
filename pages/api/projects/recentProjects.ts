@@ -17,9 +17,7 @@ const recentProjects = async (req: NextApiRequest, res: NextApiResponse) => {
         })
       );
 
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'application/json');
-      res.end(JSON.stringify({ data: projectsWithImage }));
+      res.status(200).json({ data: projectsWithImage });
     } catch (error) {
       console.log(error);
       res.statusCode = 500;

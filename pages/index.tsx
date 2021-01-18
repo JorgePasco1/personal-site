@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { Icon } from 'semantic-ui-react';
 
@@ -14,7 +14,13 @@ import { getRecentProjects } from '../utils/gitHubAdapter';
 import { getImageLink } from '../utils/s3Adapter';
 
 const Home = ({ projects }) => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [_, setModalOpen] = useState(false);
+  const mainContentRef = useRef(null);
+
+  const handleDownIndicatorClick = () => {
+    mainContentRef.current.scrollIntoView(true);
+  };
+
   return (
     <>
       <Head>
@@ -32,6 +38,7 @@ const Home = ({ projects }) => {
             name="angle down"
             className="down-indicator bounce"
             size="huge"
+            onClick={handleDownIndicatorClick}
           />
           <LeftSectionFigures />
         </div>
@@ -66,7 +73,7 @@ const Home = ({ projects }) => {
           </div>
         </div>
       </div>
-      <main>
+      <main id="main-content" ref={mainContentRef}>
         <section className="introduction">
           <h1>Hello World!</h1>
           <p>
