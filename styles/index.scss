@@ -3,10 +3,6 @@
 .hero {
   display: flex;
 
-  & > * {
-    overflow-y: hidden;
-  }
-
   .left-section {
     position: relative;
     width: 70vw;
@@ -45,7 +41,7 @@
     flex-direction: column;
     align-items: center;
     padding: 6vh 0;
-    overflow: hidden;
+    width: 30vw;
 
     .nav-bar {
       width: 50%;
@@ -55,7 +51,7 @@
       &__item {
         font-family: 'Montserrat';
         font-weight: 600;
-        font-size: 2rem;
+        font-size: 1vw;
         color: $dark-purple;
         transition: color 0.1s;
 
@@ -81,20 +77,20 @@
       z-index: 2;
 
       img {
-        width: 50%;
+        width: 15vw;
         height: auto;
         border-radius: 50%;
       }
 
       &__name {
         font-weight: 600;
-        font-size: 4rem;
+        font-size: 1.8vw;
         letter-spacing: -1px;
         margin-top: 1rem;
       }
 
       &__title {
-        font-size: 2rem;
+        font-size: 1vw;
         margin-top: 0.5rem;
       }
     }
@@ -105,7 +101,7 @@
       z-index: 2;
 
       img {
-        width: 2.5rem;
+        width: 1.5vw;
         height: auto;
       }
 

@@ -6,11 +6,11 @@ const sendContactEmail = (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(405).end('Method Not Allowed');
   }
 
-  const contactDetails = req.body.contactDetails;
-  console.log(contactDetails);
+  const contactDetails = req.body;
 
   try {
     res.status(200).json({ message: 'success' });
+    console.log({ contactDetails });
     const response = sendEmail(contactDetails);
     if (!response) {
       return res.status(500).end('Something went wrong');

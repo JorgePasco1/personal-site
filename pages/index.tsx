@@ -43,7 +43,6 @@ const Home = ({ projects }) => {
           <LeftSectionFigures />
         </div>
         <div className="right-section">
-          <RightSectionFigures />
           <div className="right-section__nav-bar nav-bar fadein-animation-top">
             <a href="/" className="nav-bar__item active">
               About
@@ -71,6 +70,7 @@ const Home = ({ projects }) => {
               <img src="/assets/logos/github.svg" alt="Github Logo" />
             </a>
           </div>
+          <RightSectionFigures />
         </div>
       </div>
       <main id="main-content" ref={mainContentRef}>
