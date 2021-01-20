@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useState, useRef, useEffect } from 'react';
+import { useRef } from 'react';
 
 import { Icon } from 'semantic-ui-react';
 
@@ -14,7 +14,6 @@ import { getRecentProjects } from '../utils/gitHubAdapter';
 import { getImageLink } from '../utils/s3Adapter';
 
 const Home = ({ projects }) => {
-  const [_, setModalOpen] = useState(false);
   const mainContentRef = useRef(null);
 
   const handleDownIndicatorClick = () => {
@@ -28,18 +27,17 @@ const Home = ({ projects }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div className="hero">
+        <Icon
+          name="angle down"
+          className="down-indicator bounce"
+          onClick={handleDownIndicatorClick}
+        />
         <div className="left-section">
           <div className="left-section__tagline fadein-animation-left">
             I strive to create unique digital products, through{' '}
             <span className="main-yellow">creativity</span> and{' '}
             <span className="main-red">engineering</span>.
           </div>
-          <Icon
-            name="angle down"
-            className="down-indicator bounce"
-            size="huge"
-            onClick={handleDownIndicatorClick}
-          />
           <LeftSectionFigures />
         </div>
         <div className="right-section">
@@ -92,12 +90,7 @@ const Home = ({ projects }) => {
             to me by filling out{' '}
             <ContactModal
               triggerButton={
-                <button
-                  className="unstyled-button"
-                  onClick={() => setModalOpen(true)}
-                >
-                  this form
-                </button>
+                <button className="unstyled-button">this form</button>
               }
             />
             , or email me at jorgepascosoto@gmail.com 📩
@@ -115,7 +108,7 @@ const Home = ({ projects }) => {
                 description={project.description}
                 link={project.html_url}
                 imageLink={project.imageLink}
-                width="20vw"
+                className="card"
               />
             ))}
             <a

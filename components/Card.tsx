@@ -5,13 +5,12 @@ type CardProps = {
   description: string;
   link: string;
   imageLink: string;
-  width: string;
+  className: string;
 };
 
-const Card = ({ title, description, link, imageLink, width }: CardProps) => {
-  const containerStyles = { width };
+const Card = ({ title, description, link, imageLink, className }: CardProps) => {
   return (
-    <div className={styles.card} style={containerStyles}>
+    <div className={`${styles.card} ${className}`}>
       <a href={link} className={styles.card__image_container}>
         <img src={imageLink || 'https://source.unsplash.com/random/800x500'} className={styles.card__image}/>
       </a>

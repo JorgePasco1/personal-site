@@ -1,12 +1,24 @@
 @import './variables.scss';
 
 .hero {
+  position: relative;
   display: flex;
+  height: 100vh;
+
+  .down-indicator {
+    position: absolute;
+    bottom: 2vh;
+    right: 50%;
+    font-size: 3vw;
+    color: $mint-cream;
+    cursor: pointer;
+    z-index: 3;
+    margin: 0;
+  }
 
   .left-section {
     position: relative;
     width: 70vw;
-    height: 100vh;
     background: url('/assets/vertical-wave.svg') no-repeat;
     background-position: right;
     background-size: cover;
@@ -25,14 +37,6 @@
       line-height: 1.2;
       z-index: 2;
     }
-
-    .down-indicator {
-      position: absolute;
-      bottom: 2rem;
-      right: 30%;
-      color: $mint-cream;
-      cursor: pointer;
-    }
   }
 
   .right-section {
@@ -42,6 +46,7 @@
     align-items: center;
     padding: 6vh 0;
     width: 30vw;
+    // overflow: hidden;
 
     .nav-bar {
       width: 50%;
@@ -168,10 +173,14 @@ main {
       display: flex;
       flex-wrap: wrap;
 
-      * {
-        margin-right: 4rem;
+      & > * {
+        margin-right: 1.4vw;
         margin-bottom: 1rem;
-        width: 100%;
+      }
+
+      .card {
+        width: 20vw;
+        min-width: 10rem;
       }
 
       &__see_all {
@@ -203,14 +212,111 @@ main {
     align-items: center;
     font-family: 'Montserrat';
     font-weight: 700;
-    padding: 3vh 0;
+    padding: 4vh 0;
+    font-size: .8rem;
 
     img {
-      width: 1.5rem;
+      width: 1rem;
       height: auto;
       filter: invert(100%) sepia(0%) saturate(7460%) hue-rotate(286deg)
         brightness(112%) contrast(96%);
       margin-left: 1rem;
+    }
+  }
+}
+
+@media (orientation: portrait) {
+  .hero {
+    flex-direction: column;
+
+    .down-indicator {
+      font-size: 4vh;
+      color: $dark-green;
+      right: calc(50% - 3vh);
+    }
+
+    .left-section {
+      height: 50vh;
+      width: 100vw;
+
+      background: url('/assets/horizontal-wave.svg') no-repeat;
+      background-size: cover;
+      background-position: bottom;
+
+      &__tagline {
+        margin-left: 0;
+        font-size: 3vh;
+        text-align: center;
+      }
+    }
+
+    .right-section {
+      height: 50vh;
+      width: 100vw;
+      justify-content: flex-start;
+
+      .nav-bar {
+        display: none;
+      }
+
+      .profile {
+        flex-grow: inherit;
+
+        img {
+          height: 20vh;
+          width: auto;
+        }
+
+        &__name {
+          font-size: 3.5vh;
+          margin-top: 1rem;
+        }
+
+        &__title {
+          font-size: 2vh;
+          margin-top: 0.5rem;
+        }
+      }
+
+      .footer {
+        margin-top: 1rem;
+
+        img {
+          width: 2vh;
+          height: auto;
+        }
+
+        a:first-child {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+
+  main {
+    padding: 5vh 10vw;
+
+    .introduction {
+      p {
+        font-size: 1.2rem;
+      }
+    }
+
+    .projects {
+      .cards {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &>*{
+          margin-bottom: 3rem;
+        }
+
+        .card {
+          width: 70vw;
+          min-width: 10rem;
+        }
+      }
     }
   }
 }
