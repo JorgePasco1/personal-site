@@ -9,6 +9,7 @@ import {
 } from '../components/SectionFigures';
 import Card from '../components/Card';
 import ContactModal from '../components/ContactModal';
+import MenuOverlay from '../components/MenuOverlay';
 
 import { getRecentProjects } from '../utils/gitHubAdapter';
 import { getImageLink } from '../utils/s3Adapter';
@@ -27,6 +28,7 @@ const Home = ({ projects }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div className="hero">
+        <MenuOverlay />
         <Icon
           name="angle down"
           className="down-indicator bounce"
@@ -42,12 +44,13 @@ const Home = ({ projects }) => {
         </div>
         <div className="right-section">
           <div className="right-section__nav-bar nav-bar fadein-animation-top">
-            <a href="/" className="nav-bar__item active">
+            <a href="#main-content" className="nav-bar__item active">
               About
             </a>
             <a
               href="https://github.com/JorgePasco1/project-tree"
               className="nav-bar__item"
+              target="_blank"
             >
               Work
             </a>
