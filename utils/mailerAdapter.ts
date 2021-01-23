@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import sgTransport from 'nodemailer-sendgrid-transport';
 
 type MailDetails = {
   sender_name: string;
@@ -7,13 +8,13 @@ type MailDetails = {
 };
 
 const sendEmail = async (senderDetails: MailDetails): Promise<boolean> => {
-  const smptTransporter = nodemailer.createTransport({
-    service: 'SendGrid',
-    auth: {
-      user: process.env.SENGRID_USERNAME,
-      pass: process.env.SENDGRID_API_KEY,
-    },
-  });
+  const transporter = nodemailer.createTransport(
+    sgTransport({
+      auth: {
+        api_key: process.env.SENDGRID_API_KEY,
+      },
+    })
+  );
 
   const mailOptions = {
     from: senderDetails.sender_email,
@@ -23,12 +24,12 @@ const sendEmail = async (senderDetails: MailDetails): Promise<boolean> => {
   };
 
   let success = true;
-  await smptTransporter.sendMail(mailOptions, (error, response) => {
+  transporter.sendMail(mailOptions, (error, response) => {
     if (error) {
       console.log(error);
       success = false;
     }
-    console.log(response)
+    console.log(response);
   });
 
   return success;
