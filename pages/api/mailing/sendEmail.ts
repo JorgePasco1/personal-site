@@ -18,7 +18,7 @@ const sendContactEmail = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(200).json({ message: 'success', response });
   } catch (e) {
     console.log(e);
-    return res.status(400).json({ error: e });
+    return res.status(400).json({ error: e.message });
   }
 };
 
