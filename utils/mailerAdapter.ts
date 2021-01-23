@@ -1,5 +1,6 @@
-import nodemailer from 'nodemailer';
-import sgTransport from 'nodemailer-sendgrid-transport';
+import sgMail from '@sendgrid/mail';
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 type MailDetails = {
   sender_name: string;
@@ -8,29 +9,21 @@ type MailDetails = {
 };
 
 const sendEmail = async (senderDetails: MailDetails): Promise<boolean> => {
-  const transporter = nodemailer.createTransport(
-    sgTransport({
-      auth: {
-        api_key: process.env.SENDGRID_API_KEY,
-      },
-    })
-  );
-
-  const mailOptions = {
-    from: senderDetails.sender_email,
+  const msg = {
     to: process.env.GMAIL_USER,
+    from: process.env.GMAIL_USER,
     subject: `[Personal Site] New Message from ${senderDetails.sender_name}(${senderDetails.sender_email})`,
     text: senderDetails.message,
   };
 
   let success = true;
-  transporter.sendMail(mailOptions, (error, response) => {
-    if (error) {
-      console.log(error);
-      success = false;
-    }
-    console.log(response);
-  });
+  try {
+    const res = await sgMail.send(msg);
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+    success = false;
+  }
 
   return success;
 };
