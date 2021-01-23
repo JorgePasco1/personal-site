@@ -6,14 +6,12 @@ type MailDetails = {
   message: string;
 };
 
-const sendEmail = (senderDetails: MailDetails): boolean => {
+const sendEmail = async (senderDetails: MailDetails): Promise<boolean> => {
   const smptTransporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
+    service: 'SendGrid',
     auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASSWORD,
+      user: process.env.SENGRID_USERNAME,
+      pass: process.env.SENDGRID_API_KEY,
     },
   });
 
@@ -25,11 +23,12 @@ const sendEmail = (senderDetails: MailDetails): boolean => {
   };
 
   let success = true;
-  smptTransporter.sendMail(mailOptions, (error, response) => {
+  await smptTransporter.sendMail(mailOptions, (error, response) => {
     if (error) {
       console.log(error);
       success = false;
     }
+    console.log(response)
   });
 
   return success;
