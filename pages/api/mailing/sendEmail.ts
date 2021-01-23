@@ -13,12 +13,12 @@ const sendContactEmail = async (req: NextApiRequest, res: NextApiResponse) => {
     const response = await sendEmail(contactDetails);
     if (!response) {
       // return res.status(500).end('Something went wrong');
-      return res.status(400).json({error: response})
+      return res.status(400).json({ error: response });
     }
     return res.status(200).json({ message: 'success', response });
   } catch (e) {
     console.log(e);
-    return res.status(500).end('Something Went Wrong');
+    return res.status(400).json({ error: e });
   }
 };
 
