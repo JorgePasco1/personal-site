@@ -8,7 +8,7 @@ type MailDetails = {
   message: string;
 };
 
-const sendEmail = async (senderDetails: MailDetails): Promise<boolean> => {
+const sendEmail = async (senderDetails: MailDetails): Promise<any> => {
   const msg = {
     to: process.env.GMAIL_USER,
     from: process.env.GMAIL_USER,
@@ -16,16 +16,13 @@ const sendEmail = async (senderDetails: MailDetails): Promise<boolean> => {
     text: senderDetails.message,
   };
 
-  let success = true;
   try {
     const res = await sgMail.send(msg);
-    console.log(res);
+    return res;
   } catch (error) {
     console.log(error);
-    success = false;
+    return error;
   }
-
-  return success;
 };
 
 export default sendEmail;
