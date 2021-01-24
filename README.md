@@ -17,7 +17,7 @@ Create an enviroment file (`.env`) and include your SendGrid API key, and your v
 ```shell
 GH_ACCESS_TOKEN=<random_characters>
 SENDGRID_API_KEY=SG.random.characters
-GMAIL_USER=jorgepascosoto@gmail.com
+GMAIL_USER=youremail@gmail.com
 ```
 
 ### Running the server
