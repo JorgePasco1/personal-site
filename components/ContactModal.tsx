@@ -1,5 +1,6 @@
-import { useState, useRef, SyntheticEvent } from 'react';
-import axios from 'axios';
+import { useState, useRef } from 'react';
+import { FormState } from '../utils/enums';
+import useContactForm from '../hooks/useContactForm';
 
 import {
   Form,
@@ -17,49 +18,20 @@ type ContactModalProps = {
   triggerButton: React.HTMLProps<HTMLButtonElement>;
 };
 
-enum FormState {
-  WAITING = 'waiting',
-  LOADING = 'loading',
-  SUCCESS = 'success',
-  ERROR = 'error',
-}
-
 const ContactModal = ({ triggerButton }: ContactModalProps) => {
   const [open, setOpen] = useState(false);
   const [formState, setFormState] = useState(FormState.WAITING);
   const formRef = useRef(null);
 
-  // Form values
-  const [userName, setUserName] = useState('');
-  const [userEmail, setUserEmail] = useState('');
-  const [userMessage, setUserMessage] = useState('');
-
-  const handleSendClick = async (e: SyntheticEvent) => {
-    e.preventDefault();
-    if (!formRef.current.checkValidity()) {
-      return formRef.current.reportValidity();
-    }
-
-    setFormState(FormState.LOADING);
-    const contactDetails = {
-      sender_name: userName,
-      sender_email: userEmail,
-      message: userMessage,
-    };
-
-    try {
-      await axios.post('/api/mailing/sendEmail', {
-        contactDetails,
-      });
-      setFormState(FormState.SUCCESS);
-      setUserMessage('');
-    } catch (e) {
-      console.log(e);
-      setFormState(FormState.ERROR);
-    }
-
-    setTimeout(() => setFormState(FormState.WAITING), 5000);
-  };
+  const {
+    userName,
+    setUserName,
+    userEmail,
+    setUserEmail,
+    userMessage,
+    setUserMessage,
+    handleSendClick,
+  } = useContactForm(formRef, FormState, setFormState);
 
   return (
     <Modal
