@@ -1,38 +1,35 @@
-## Next Typescript App
+## Personal Site
 
-This is a repository to learn TypeScript by building a NextJs app with it.
+This is personal website to have an introduction to my development profile and host a small blog. Created with Next and Typescript. Currently deployed to vercel on: https://personal-site.jorgepasco1.vercel.app/
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Instructions to run locally.
 
-## Getting Started
+### Github
 
-First, run the development server:
+This projects connects to the GitHub API to get my most recent projects. To have a less limited amount of requests to the API, you will need to have a [GitHub Access Token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) to pass along with the requests. Note that this is not necessary, but could potentially limit you.
 
-```bash
-npm run dev
-# or
-yarn dev
+### Mailing
+
+To get the contact form functionality to work, you first will need to have a [verified sender email on SendGrid](https://sendgrid.com/docs/ui/sending-email/sender-verification). With that you will get an API key, in the form of `SG.<random_characters>`.
+
+Create an enviroment file (`.env`) and include your SendGrid API key, and your verified email:
+
+```shell
+GH_ACCESS_TOKEN=<random_characters>
+SENDGRID_API_KEY=SG.random.characters
+GMAIL_USER=jorgepascosoto@gmail.com
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Running the server
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Once you have your environment variables, you can go ahead and install the project dependencies with:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```shell
+npm install
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+And then start the server with:
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```shell
+npm run dev
+```
