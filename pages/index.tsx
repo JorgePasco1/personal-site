@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useRef } from 'react';
 
-import { Hero, MainContent } from './sections/indexSections';
+import { Hero, MainContent } from '../sections/indexSections';
 
 import { getRecentProjects } from '../utils/gitHubAdapter';
 import { getImageLink } from '../utils/s3Adapter';

@@ -4,10 +4,10 @@ import { Icon } from 'semantic-ui-react';
 import {
   LeftSectionFigures,
   RightSectionFigures,
-} from '../../components/SectionFigures';
-import MenuOverlay from '../../components/MenuOverlay';
-import Card from '../../components/Card';
-import ContactModal from '../../components/ContactModal';
+} from '../components/SectionFigures';
+import MenuOverlay from '../components/MenuOverlay';
+import Card from '../components/Card';
+import ContactModal from '../components/ContactModal';
 
 type HeroProps = {
   mainContentRef: MutableRefObject<any>;
