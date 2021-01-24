@@ -12,7 +12,7 @@ type ProjectInfo = {
 const extractProjectsUrls = (text: string): Array<string> => {
   const recentProjects = text
     .split('\n---\n\n')[0]
-    .split('Last projects:\n  ')[1];
+    .split('Latest projects:\n  ')[1];
 
   const markDownLinkPattern = /(\[[\w ]+\])(\(https:\/\/github.com\/JorgePasco1\/[\w-]+\))/gi;
   let matches = markDownLinkPattern.exec(recentProjects);
