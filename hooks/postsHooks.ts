@@ -1,4 +1,5 @@
 import { createClient } from 'contentful';
+import { Post } from '../utils/types';
 
 const POST_CONTENT_TYPE = 'blogPost';
 
@@ -7,7 +8,7 @@ const client = createClient({
   accessToken: process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN,
 });
 
-export const useFetchPosts = async (): Promise<any> => {
+export const useFetchPosts = async (): Promise<Post[]> => {
   const getPosts = async () => {
     const response = await client.getEntries({
       content_type: POST_CONTENT_TYPE,
@@ -16,18 +17,18 @@ export const useFetchPosts = async (): Promise<any> => {
   };
 
   const posts = await getPosts();
-  return posts;
+  return posts as Post[];
 };
 
-export const useFetchSinglePost = async (slug: string): Promise<any> => {
+export const useFetchSinglePost = async (slug: string): Promise<Post> => {
   const getPost = async () => {
     const response = await client.getEntries({
       content_type: POST_CONTENT_TYPE,
       'fields.slug': slug,
     });
-    return response.items[0]
+    return response.items[0];
   };
 
   const post = await getPost();
-  return post;
+  return post as Post;
 };

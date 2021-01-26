@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
-import { FormState } from '../utils/enums';
-import useContactForm from '../hooks/useContactForm';
+import { FormState } from '../../utils/enums';
+import useContactForm from '../../hooks/useContactForm';
 
 import {
   Form,

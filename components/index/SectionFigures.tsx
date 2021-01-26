@@ -1,4 +1,4 @@
-import GeomFigure from '../components/GeomFigure';
+import GeomFigure from './GeomFigure';
 
 export const LeftSectionFigures = () => {
   const figures = [
