@@ -1,18 +1,113 @@
+@import '../../../styles/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
+$heading-font: 'Fraunces', serif;
+$content-font: 'Lora', serif;
+$margin-bottom: 2.5rem;
+
 .cover-photo {
   width: 100vw;
-  height: 30vh;
+  height: 20vw;
+  min-height: 20rem;
   margin: 0;
   object-fit: cover;
-  filter: brightness(.7);
+  filter: brightness(0.7);
 }
 
 .post {
   width: 80vw;
   max-width: 60rem;
-  margin: 0 auto;
+  margin: 5vh auto;
+  font-family: $content-font;
+  font-weight: 400;
 
   h1 {
-    font-family: Montserrat;
-    font-weight: 800;
+    font-family: $heading-font;
+    font-weight: 700;
+    font-size: 5rem;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    color: $dark-green;
+  }
+
+  &__subtitle {
+    color: $mid-gray;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: $margin-bottom;
+  }
+
+  p {
+    font-size: 1.3rem;
+  }
+
+  & > * > * {
+    margin-bottom: $margin-bottom;
+  }
+
+  hr {
+    border: 0;
+    border-bottom: 1px dashed #ccc;
+    background: #999;
+    margin-bottom: 2rem;
+  }
+
+  a {
+    color: $light-green;
+    font-weight: 600;
+  }
+
+  ul,
+  ol {
+    padding-inline-start: 2rem;
+
+    p {
+      margin: inherit;
+    }
+  }
+
+  ol {
+    padding-inline-start: 2.2rem;
+  }
+
+  ul li::marker {
+    color: $red-crayola;
+  }
+
+  ol li::marker {
+    content: counter(list-item) '›  ';
+    font-size: 1.1rem;
+    color: $red-crayola;
+  }
+
+  // Taken and adapted from https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/
+  blockquote {
+    background: #f9f9f9;
+    border-left: 7px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 1em 10px;
+    quotes: '\201C''\201D''\2018''\2019';
+  }
+  blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+  blockquote p {
+    display: inline;
+  }
+}
+
+@media (orientation: portrait) {
+  .post h1 {
+    font-size: 5vh;
+  }
+
+  .post h2 {
+    font-size: 3vh;
   }
 }

@@ -1,13 +1,14 @@
 import { Document } from '@contentful/rich-text-types';
-import { ImageProps } from 'semantic-ui-react';
 
 export type Post = {
   sys: {
     id: string;
+    createdAt: Date;
+    updatedAt: Date;
   };
   fields: {
     title: string;
-    publicationDate: Date;
+    subtitle: string;
     postContent: Document;
     slug: string;
     coverImage: {
