@@ -60,15 +60,20 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
     );
   };
 
-  const CoverImage: React.FC = () => {
-    return (
-      post?.fields.coverImage && (
-        <img
-          className={styles['cover-photo']}
-          src={post.fields.coverImage.fields.file.url}
-        />
-      )
-    );
+  const createCoverImage = (): null | React.FC => {
+    const CoverImage: React.FC = () => {
+      return (
+        post.fields.coverImage && (
+          <img
+            className={styles['cover-photo']}
+            src={post.fields.coverImage.fields.file.url}
+            alt="Cover"
+          />
+        )
+      );
+    };
+
+    return post && <CoverImage />;
   };
 
   const PostContent: React.FC = () => {
@@ -88,14 +93,14 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
   return (
     <div className="container">
       <Head>
-        <title>{title} | Jorge Pasco Blog</title>
+        <title>{title}| Jorge Pasco Blog</title>
       </Head>
-      <CoverImage />
+      {createCoverImage()}
       <NavComponent />
       <div className={styles.post}>
         <PillTag>{getDateText(new Date(publicationDate))}</PillTag>
         <h1>{title}</h1>
-        <div className={styles['post__subtitle']}>{subtitle}</div>
+        <div className={styles.post__subtitle}>{subtitle}</div>
         <PostContent />
       </div>
     </div>
