@@ -63,17 +63,15 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
   const createCoverImage = (): null | React.FC => {
     const CoverImage: React.FC = () => {
       return (
-        post.fields.coverImage && (
-          <img
-            className={styles['cover-photo']}
-            src={post.fields.coverImage.fields.file.url}
-            alt="Cover"
-          />
-        )
+        <img
+          className={styles['cover-photo']}
+          src={post.fields.coverImage.fields.file.url}
+          alt="Cover"
+        />
       );
     };
 
-    return post && <CoverImage />;
+    return post ? <CoverImage /> : null;
   };
 
   const PostContent: React.FC = () => {

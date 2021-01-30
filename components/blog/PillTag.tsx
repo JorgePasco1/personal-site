@@ -11,7 +11,14 @@ const PillTag: React.FC<PillTagProps> = ({
   children,
 }) => {
   return (
-    <Label circular style={{ backgroundColor: backgroundColor, color: color, padding: '.5em 1em !important' }}>
+    <Label
+      circular
+      style={{
+        backgroundColor: backgroundColor,
+        color: color,
+        padding: '.5em 1em !important',
+      }}
+    >
       {children}
     </Label>
   );
