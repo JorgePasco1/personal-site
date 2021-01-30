@@ -5,6 +5,20 @@ $heading-font: 'Fraunces', serif;
 $content-font: 'Lora', serif;
 $margin-bottom: 2.5rem;
 
+.navigation {
+  min-height: 3rem;
+  width: 80vw;
+  max-width: 60rem;
+  margin: 2vh auto 1vh auto;
+  display: flex;
+  align-items: center;
+
+  a {
+    color: $light-green;
+    display: block;
+  }
+}
+
 .cover-photo {
   width: 100vw;
   height: 20vw;
@@ -17,14 +31,14 @@ $margin-bottom: 2.5rem;
 .post {
   width: 80vw;
   max-width: 60rem;
-  margin: 5vh auto;
+  margin: 0 auto 5vh auto;
   font-family: $content-font;
   font-weight: 400;
 
   h1 {
     font-family: $heading-font;
     font-weight: 700;
-    font-size: 5rem;
+    font-size: 4rem;
     margin-bottom: 5px;
     margin-top: 5px;
     color: $dark-green;
@@ -56,6 +70,10 @@ $margin-bottom: 2.5rem;
   a {
     color: $light-green;
     font-weight: 600;
+
+    &:hover {
+      text-decoration: underline 2px dashed;
+    }
   }
 
   ul,
@@ -104,7 +122,7 @@ $margin-bottom: 2.5rem;
 
 @media (orientation: portrait) {
   .post h1 {
-    font-size: 5vh;
+    font-size: 4vh;
   }
 
   .post h2 {

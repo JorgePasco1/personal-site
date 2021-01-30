@@ -23,11 +23,16 @@
 
   &__title{
     color: $dark-green;
-    font-size: larger;
+    font-size: 1.8rem;
     font-weight: 600;
   }
 
   &__title, &__description {
     padding-left: .25rem;
+  }
+
+  &__description {
+    font-size: 1.2rem;
+    color: rgb(70, 70, 70);
   }
 }

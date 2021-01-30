@@ -1,9 +1,6 @@
-import { useEffect } from 'react';
-
 import '../styles/globals.scss';
 import 'semantic-ui-css/semantic.min.css';
 import '../styles/shared.scss';
-import '../styles/index.scss';
 import '../styles/animations.scss';
 
 function MyApp({ Component, pageProps }) {

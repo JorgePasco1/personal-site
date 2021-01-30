@@ -1,10 +1,11 @@
 import Head from 'next/head';
 import { useRef } from 'react';
 
-import { Hero, MainContent } from '../sections/indexSections';
+import { Hero, MainContent } from '../components/index/sections/indexSections';
 
 import { getRecentProjects } from '../utils/gitHubAdapter';
 import { getImageLink } from '../utils/s3Adapter';
+import styles from './index.module.scss'
 
 const Home = ({ projects }) => {
   const mainContentRef = useRef(null);
@@ -16,8 +17,8 @@ const Home = ({ projects }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
-      <Hero mainContentRef={mainContentRef} />
-      <MainContent mainContentRef={mainContentRef} projects={projects} />
+      <Hero mainContentRef={mainContentRef} styles={styles}/>
+      <MainContent mainContentRef={mainContentRef} projects={projects} styles={styles}/>
     </>
   );
 };

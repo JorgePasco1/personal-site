@@ -9,13 +9,23 @@ $button-width: 1.5rem;
 .button_container {
   display: none;
   position: absolute;
-  top: 3rem;
-  right: 2rem;
   height: $button-height;
   width: $button-width;
   cursor: pointer;
   z-index: 100;
   transition: opacity 0.25s ease;
+
+  &.light {
+    .top, .middle, .bottom {
+      background-color: #f4fffd;
+    }
+  }
+
+  &.dark {
+    .top, .middle, .bottom {
+      background-color: #202020;
+    }
+  }
 
   &:hover {
     opacity: 0.7;
