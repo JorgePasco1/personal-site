@@ -16,6 +16,9 @@ const MenuOverlay: React.FC<{ color?: 'dark' | 'light' }> = ({
         }`}
         id={styles.toggle}
         onClick={() => setOverlayActive(!overlayActive)}
+        onKeyDown={() => setOverlayActive(!overlayActive)}
+        role="button"
+        tabIndex={0}
       >
         <span className={styles.top}></span>
         <span className={styles.middle}></span>
@@ -36,6 +39,7 @@ const MenuOverlay: React.FC<{ color?: 'dark' | 'light' }> = ({
               <a
                 href="https://github.com/JorgePasco1/project-tree"
                 target="_blank"
+                rel="noreferrer"
               >
                 Work
               </a>

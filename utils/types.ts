@@ -21,3 +21,21 @@ export type Post = {
     author: string;
   };
 };
+
+export type GetStaticPropsReturn = {
+  props: {
+    [key: string]: any;
+  };
+};
+
+export type GetStaticPathsReturn = {
+  paths: any[];
+  fallback: boolean;
+};
+
+export type ProjectInfo = {
+  html_url: string;
+  description: string;
+  name: string;
+  imageLink: string;
+};

@@ -8,25 +8,25 @@ const client = createClient({
   accessToken: process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN,
 });
 
-export const useFetchPosts = async (): Promise<Post[]> => {
-  const getPosts = async () => {
+export const fetchPosts = async (): Promise<Post[]> => {
+  const getPosts = async (): Promise<Post[]> => {
     const response = await client.getEntries({
       content_type: POST_CONTENT_TYPE,
     });
-    return response.items;
+    return response.items as Post[];
   };
 
   const posts = await getPosts();
   return posts as Post[];
 };
 
-export const useFetchSinglePost = async (slug: string): Promise<Post> => {
-  const getPost = async () => {
+export const fetchSinglePost = async (slug: string): Promise<Post> => {
+  const getPost = async (): Promise<Post> => {
     const response = await client.getEntries({
       content_type: POST_CONTENT_TYPE,
       'fields.slug': slug,
     });
-    return response.items[0];
+    return response.items[0] as Post;
   };
 
   const post = await getPost();

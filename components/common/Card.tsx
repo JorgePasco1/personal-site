@@ -8,7 +8,7 @@ type CardProps = {
   className?: string;
 };
 
-const Card = ({
+const Card: React.FC<CardProps> = ({
   title,
   description,
   link,
@@ -21,6 +21,7 @@ const Card = ({
         <img
           src={imageLink || 'https://source.unsplash.com/random/800x500'}
           className={styles.card__image}
+          alt="Card Cover"
         />
       </a>
       <a href={link} className={styles.card__title}>

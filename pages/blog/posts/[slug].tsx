@@ -6,14 +6,18 @@ import Link from 'next/link';
 import { Icon } from 'semantic-ui-react';
 
 import PillTag from '../../../components/blog/PillTag';
-import { useFetchPosts, useFetchSinglePost } from '../../../hooks/postsHooks';
-import { Post } from '../../../utils/types';
+import { fetchPosts, fetchSinglePost } from '../../../hooks/postsHooks';
+import {
+  Post,
+  GetStaticPropsReturn,
+  GetStaticPathsReturn,
+} from '../../../utils/types';
 import { getDateText } from '../../../utils/helpers';
 
 import styles from './Post.module.scss';
 
-export const getStaticPaths = async () => {
-  const posts = await useFetchPosts();
+export const getStaticPaths = async (): Promise<GetStaticPathsReturn> => {
+  const posts = await fetchPosts();
   return {
     paths: posts.map((post: Post) => ({
       params: { slug: post.fields.slug },
@@ -22,8 +26,16 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }) => {
-  const post = await useFetchSinglePost(params.slug);
+type GetStaticPropsParams = {
+  params: {
+    slug: string;
+  };
+};
+
+export const getStaticProps = async ({
+  params,
+}: GetStaticPropsParams): Promise<GetStaticPropsReturn> => {
+  const post = await fetchSinglePost(params.slug);
   return {
     props: {
       post: post,
@@ -60,18 +72,14 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
     );
   };
 
-  const createCoverImage = (): null | React.FC => {
-    const CoverImage: React.FC = () => {
-      return (
-        <img
-          className={styles['cover-photo']}
-          src={post.fields.coverImage.fields.file.url}
-          alt="Cover"
-        />
-      );
-    };
-
-    return post ? <CoverImage /> : null;
+  const CoverImage: React.FC = () => {
+    return (
+      <img
+        className={styles['cover-photo']}
+        src={post.fields.coverImage.fields.file.url}
+        alt="Cover"
+      />
+    );
   };
 
   const PostContent: React.FC = () => {
@@ -79,9 +87,7 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
       <div>
         {documentToReactComponents(postContent, {
           renderNode: {
-            [BLOCKS.EMBEDDED_ASSET]: (node) => {
-              return <PostImage node={node} />;
-            },
+            [BLOCKS.EMBEDDED_ASSET]: (node) => <PostImage node={node} />,
           },
         })}
       </div>
@@ -93,7 +99,7 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
       <Head>
         <title>{title}| Jorge Pasco Blog</title>
       </Head>
-      {createCoverImage()}
+      {post && <CoverImage />}
       <NavComponent />
       <div className={styles.post}>
         <PillTag>{getDateText(new Date(publicationDate))}</PillTag>

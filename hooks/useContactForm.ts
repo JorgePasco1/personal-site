@@ -1,20 +1,37 @@
 import axios from 'axios';
-import { useState, SyntheticEvent, MutableRefObject } from 'react';
+import {
+  useState,
+  SyntheticEvent,
+  MutableRefObject,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 import { FormState } from '../utils/enums';
 
+type useContactFormReturn = {
+  userName: string;
+  setUserName: Dispatch<SetStateAction<string>>;
+  userEmail: string;
+  setUserEmail: Dispatch<SetStateAction<string>>;
+  userMessage: string;
+  setUserMessage: Dispatch<SetStateAction<string>>;
+  handleSendClick: (e: SyntheticEvent) => Promise<void>;
+};
+
 const useContactForm = (
-  formRef: MutableRefObject<any>,
+  formRef: MutableRefObject<HTMLFormElement>,
   formState: typeof FormState,
-  setFormState: Function
-) => {
+  setFormState: Dispatch<SetStateAction<string>>
+): useContactFormReturn => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userMessage, setUserMessage] = useState('');
 
-  const handleSendClick = async (e: SyntheticEvent) => {
+  const handleSendClick = async (e: SyntheticEvent): Promise<void> => {
     e.preventDefault();
     if (!formRef.current.checkValidity()) {
-      return formRef.current.reportValidity();
+      formRef.current.reportValidity();
+      return;
     }
 
     setFormState(formState.LOADING);

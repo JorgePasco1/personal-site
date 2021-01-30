@@ -3,11 +3,7 @@ import axios from 'axios';
 const BASE_GITHUB_API_URL = 'https://api.github.com';
 const GH_ACCESS_TOKEN = process.env.GH_ACCESS_TOKEN;
 
-type ProjectInfo = {
-  html_url: string;
-  description: string;
-  name: string;
-};
+import { ProjectInfo } from '../utils/types';
 
 const extractProjectsUrls = (text: string): Array<string> => {
   const recentProjects = text

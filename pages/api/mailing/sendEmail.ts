@@ -1,7 +1,10 @@
 import { NextApiResponse, NextApiRequest } from 'next';
 import sendEmail from '../../../utils/mailerAdapter';
 
-const sendContactEmail = async (req: NextApiRequest, res: NextApiResponse) => {
+const sendContactEmail = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   if (req.method !== 'POST') {
     return res.status(405).end('Method Not Allowed');
   }

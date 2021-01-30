@@ -1,6 +1,6 @@
 import GeomFigure from './GeomFigure';
 
-export const LeftSectionFigures = () => {
+export const LeftSectionFigures: React.FC = () => {
   const figures = [
     {
       type: 'circle',
@@ -99,7 +99,7 @@ export const LeftSectionFigures = () => {
   );
 };
 
-export const RightSectionFigures = () => {
+export const RightSectionFigures: React.FC = () => {
   const figures = [
     {
       type: 'square',

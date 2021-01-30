@@ -17,7 +17,7 @@ type GeomFigureProps = {
   };
 };
 
-const GeomFigure = ({
+const GeomFigure: React.FC<GeomFigureProps> = ({
   type,
   size,
   color,
@@ -26,7 +26,7 @@ const GeomFigure = ({
   animation = null,
 }: GeomFigureProps) => {
   const figureContainerStyles = {
-    position: 'absolute' as 'absolute',
+    position: 'absolute' as const,
     ...position,
     transform: rotation && `rotate(${rotation})`,
     zIndex: 1,
@@ -42,7 +42,7 @@ const GeomFigure = ({
     height: size,
   };
 
-  const TriangleSvg = () => (
+  const TriangleSvg: React.FC = () => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245.46 220.12">
       <g id="Layer_2" data-name="Layer 2">
         <g id="Layer_1-2" data-name="Layer 1">
@@ -65,7 +65,10 @@ const GeomFigure = ({
       className={rotationClass && styles[rotationClass]}
       style={figureContainerStyles}
     >
-      <div className={`${figureClassName} squash-animation`} style={figureStyles}>
+      <div
+        className={`${figureClassName} squash-animation`}
+        style={figureStyles}
+      >
         {type === 'triangle' && <TriangleSvg />}
       </div>
     </div>

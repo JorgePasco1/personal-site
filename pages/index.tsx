@@ -1,13 +1,14 @@
 import Head from 'next/head';
 import { useRef } from 'react';
 
+import { ProjectInfo, GetStaticPropsReturn } from '../utils/types';
 import { Hero, MainContent } from '../components/index/sections/indexSections';
 
 import { getRecentProjects } from '../utils/gitHubAdapter';
 import { getImageLink } from '../utils/s3Adapter';
-import styles from './index.module.scss'
+import styles from './index.module.scss';
 
-const Home = ({ projects }) => {
+const Home: React.FC<{ projects: ProjectInfo[] }> = ({ projects }) => {
   const mainContentRef = useRef(null);
 
   return (
@@ -17,13 +18,17 @@ const Home = ({ projects }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
-      <Hero mainContentRef={mainContentRef} styles={styles}/>
-      <MainContent mainContentRef={mainContentRef} projects={projects} styles={styles}/>
+      <Hero mainContentRef={mainContentRef} styles={styles} />
+      <MainContent
+        mainContentRef={mainContentRef}
+        projects={projects}
+        styles={styles}
+      />
     </>
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps = async (): Promise<GetStaticPropsReturn> => {
   let projects = await getRecentProjects();
   projects = await Promise.all(
     projects.map(async (project) => {
@@ -36,6 +41,6 @@ export async function getStaticProps() {
   );
 
   return { props: { projects } };
-}
+};
 
 export default Home;

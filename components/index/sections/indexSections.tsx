@@ -6,26 +6,27 @@ import { LeftSectionFigures, RightSectionFigures } from '../SectionFigures';
 import MenuOverlay from '../../common/MenuOverlay';
 import Card from '../../common/Card';
 import ContactModal from '../ContactModal';
+import { ProjectInfo } from '../../../utils/types';
 
 type HeroProps = {
-  mainContentRef: MutableRefObject<any>;
-  styles: any;
+  mainContentRef: MutableRefObject<HTMLElement>;
+  styles: { readonly [key: string]: string };
 };
 
 type MainContentProps = {
-  mainContentRef: MutableRefObject<any>;
-  projects: Array<any>;
-  styles: any;
+  mainContentRef: MutableRefObject<HTMLElement>;
+  projects: Array<ProjectInfo>;
+  styles: { readonly [key: string]: string };
 };
 
-export const Hero = ({ mainContentRef, styles }: HeroProps) => {
-  const handleDownIndicatorClick = () => {
+export const Hero: React.FC<HeroProps> = ({ mainContentRef, styles }) => {
+  const handleDownIndicatorClick = (): void => {
     mainContentRef.current.scrollIntoView(true);
   };
 
   return (
     <div className={styles['hero']}>
-      <div className={styles["menu-overlay-container"]}>
+      <div className={styles['menu-overlay-container']}>
         <MenuOverlay />
       </div>
       <Icon
@@ -55,6 +56,7 @@ export const Hero = ({ mainContentRef, styles }: HeroProps) => {
             href="https://github.com/JorgePasco1/project-tree"
             className={styles['nav-bar__item']}
             target="_blank"
+            rel="noreferrer"
           >
             Work
           </a>
@@ -62,20 +64,26 @@ export const Hero = ({ mainContentRef, styles }: HeroProps) => {
             <a className={styles['nav-bar__item']}>Blog</a>
           </Link>
         </div>
-        <div
-          className={`${styles['profile']} fadein-animation-top}`}
-        >
-          <img src="/assets/profile.png"></img>
+        <div className={`${styles['profile']} fadein-animation-top}`}>
+          <img src="/assets/profile.png" alt="Profile"></img>
           <div className={styles['profile__name']}>Jorge Pasco</div>
           <div className={styles['profile__title']}>Software Engineer</div>
         </div>
         <div
           className={`${styles['right_section__footer']} ${styles['footer']} fadein-animation-top}`}
         >
-          <a href="https://www.linkedin.com/in/jorgepasco1/" target="_blank">
+          <a
+            href="https://www.linkedin.com/in/jorgepasco1/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img src="/assets/logos/linkedin.svg" alt="LinkedIn Logo" />
           </a>
-          <a href="https://www.github.com/jorgepasco1" target="_blank">
+          <a
+            href="https://www.github.com/jorgepasco1"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img src="/assets/logos/github.svg" alt="Github Logo" />
           </a>
         </div>
@@ -85,7 +93,7 @@ export const Hero = ({ mainContentRef, styles }: HeroProps) => {
   );
 };
 
-export const MainContent = ({
+export const MainContent: React.FC<MainContentProps> = ({
   mainContentRef,
   projects,
   styles,
@@ -95,22 +103,36 @@ export const MainContent = ({
       <section className={styles['introduction']}>
         <h1>Hello World!</h1>
         <p>
-          I’m Jorge Pasco, a software engineer based in Peru 🇵🇪. I currently
-          work at Makrwatch, where I focus on backend services to help the
-          company keep up with its exponential growth. I have experience as a
-          front-end developer, and the technologies I love and use the most are
-          Python🐍/Flask and JavaScript/React ⚛️. I'm also a Data
-          Science/Machine Learning enthusiast, currently working on improving my
-          skills 💪.
+          I’m Jorge Pasco, a software engineer based in Peru{' '}
+          <span role="img" aria-label="Peruvian Flag">
+            🇵🇪
+          </span>
+          . I currently work at Makrwatch, where I focus on backend services to
+          help the company keep up with its exponential growth. I have
+          experience as a front-end developer, and the technologies I love and
+          use the most are Python
+          <span role="img" aria-label="Snake">
+            🐍
+          </span>
+          /Flask and JavaScript/React{' '}
+          <span role="img" aria-label="Atom">
+            ⚛️
+          </span>
+          . I&apos;m also a Data Science/Machine Learning enthusiast, currently
+          working on improving my skills{' '}
+          <span role="img" aria-label="Flexed Bicep">
+            💪
+          </span>
+          .
         </p>
         <p>
-          I'm self-taught and passionate about learning new technologies and
+          I am self-taught and passionate about learning new technologies and
           solving problems. You can take a look a{' '}
           <a href="/assets/JorgePasco_Resume.pdf">my resume</a> 🙌. Reach out to
           me by filling out{' '}
           <ContactModal
             triggerButton={
-              <button className='unstyled-button'>this form</button>
+              <button className="unstyled-button">this form</button>
             }
           />
           , or email me at jorgepascosoto@gmail.com 📩
@@ -135,16 +157,33 @@ export const MainContent = ({
             href="https://github.com/JorgePasco1/project-tree"
             className={styles['cards__see_all']}
           >
-            See all 👉
+            See all{' '}
+            <span role="img" aria-label="Hand Pointing Right">
+              👉
+            </span>
           </a>
         </div>
       </section>
       <footer>
-        <div>Coded with ❤️ by Jorge Pasco</div>
-        <a href="https://www.linkedin.com/in/jorgepasco1/" target="_blank">
+        <div>
+          Coded with{' '}
+          <span role="img" aria-label="Heart">
+            ❤️
+          </span>{' '}
+          by Jorge Pasco
+        </div>
+        <a
+          href="https://www.linkedin.com/in/jorgepasco1/"
+          target="_blank"
+          rel="noreferrer"
+        >
           <img src="/assets/logos/linkedin.svg" alt="LinkedIn Logo" />
         </a>
-        <a href="https://www.github.com/jorgepasco1" target="_blank">
+        <a
+          href="https://www.github.com/jorgepasco1"
+          target="_blank"
+          rel="noreferrer"
+        >
           <img src="/assets/logos/github.svg" alt="Github Logo" />
         </a>
       </footer>

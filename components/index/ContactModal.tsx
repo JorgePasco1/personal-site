@@ -18,7 +18,9 @@ type ContactModalProps = {
   triggerButton: React.HTMLProps<HTMLButtonElement>;
 };
 
-const ContactModal = ({ triggerButton }: ContactModalProps) => {
+const ContactModal: React.FC<ContactModalProps> = ({
+  triggerButton,
+}: ContactModalProps) => {
   const [open, setOpen] = useState(false);
   const [formState, setFormState] = useState(FormState.WAITING);
   const formRef = useRef(null);

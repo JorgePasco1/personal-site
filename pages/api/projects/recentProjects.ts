@@ -3,7 +3,10 @@ import { NextApiResponse, NextApiRequest } from 'next';
 import { getRecentProjects } from '../../../utils/gitHubAdapter';
 import { getImageLink } from '../../../utils/s3Adapter';
 
-const recentProjects = async (req: NextApiRequest, res: NextApiResponse) => {
+const recentProjects = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   if (req.method === 'GET') {
     try {
       const projects = await getRecentProjects();
