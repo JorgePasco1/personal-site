@@ -3,8 +3,8 @@ import { Document } from '@contentful/rich-text-types';
 export type Post = {
   sys: {
     id: string;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
   };
   fields: {
     title: string;
