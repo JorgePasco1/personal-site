@@ -37,5 +37,5 @@ export type ProjectInfo = {
   html_url: string;
   description: string;
   name: string;
-  imageLink: string;
+  imageLink?: string;
 };
