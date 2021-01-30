@@ -44,8 +44,8 @@ export const getStaticProps = async ({
 };
 
 const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
-  const { title, subtitle, postContent } = post.fields;
-  const { createdAt: publicationDate } = post.sys;
+  const { title, subtitle, postContent } = post?.fields;
+  const { createdAt: publicationDate } = post?.sys;
 
   const PostImage: React.FC<{ node: { [key: string]: any } }> = ({ node }) => {
     return (
@@ -72,7 +72,7 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
     );
   };
 
-  const CoverImage: React.FC = () => {
+  const CoverImage: React.FC<{ post: Post }> = ({ post }) => {
     return (
       <img
         className={styles['cover-photo']}
@@ -100,7 +100,7 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
       <Head>
         <title>{title}| Jorge Pasco Blog</title>
       </Head>
-      {post && <CoverImage />}
+      {post && <CoverImage post={post} />}
       <NavComponent />
       <div className={styles.post}>
         <PillTag>{getDateText(new Date(publicationDate))}</PillTag>
