@@ -9,6 +9,7 @@ import Card from '../../components/common/Card';
 import MenuOverlay from '../../components/common/MenuOverlay';
 
 import styles from './blogIndex.module.scss';
+import { Text } from '@contentful/rich-text-types';
 
 export const getStaticProps = async (): Promise<GetStaticPropsReturn> => {
   const posts = await fetchPosts();
@@ -50,12 +51,14 @@ const index: React.FC<{ posts: Post[] }> = ({ posts }) => {
     const { title, coverImage, postContent, slug } = post.fields;
     const linkToPost = `/blog/posts/${slug}`;
     const imageLink = coverImage?.fields.file.url;
+    console.log('content', typeof postContent.content[0].content[0]);
 
     return (
       <Card
         title={title}
         description={
-          truncate(postContent.content[0].content[0].value, 150) + '...'
+          truncate((postContent.content[0].content[0] as Text).value, 150) +
+          '...'
         }
         link={linkToPost}
         imageLink={imageLink}

@@ -87,6 +87,7 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
       <div>
         {documentToReactComponents(postContent, {
           renderNode: {
+            // eslint-disable-next-line
             [BLOCKS.EMBEDDED_ASSET]: (node) => <PostImage node={node} />,
           },
         })}
