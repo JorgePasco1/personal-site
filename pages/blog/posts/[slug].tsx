@@ -15,6 +15,7 @@ import {
 import { getDateText } from '../../../utils/helpers';
 
 import styles from './Post.module.scss';
+import { useRouter } from 'next/dist/client/router';
 
 export const getStaticPaths = async (): Promise<GetStaticPathsReturn> => {
   const posts = await fetchPosts();
@@ -38,16 +39,23 @@ export const getStaticProps = async ({
   const post = await fetchSinglePost(params.slug);
   return {
     props: {
-      post: post,
+      post,
     },
+    revalidate: 60 * 60 * 2,
   };
 };
 
 const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <h1>Post not found</h1>;
+  }
   const { title, subtitle, postContent } = post.fields;
   const { createdAt: publicationDate } = post.sys;
 
   const PostImage: React.FC<{ node: { [key: string]: any } }> = ({ node }) => {
+    console.log('node', node.data.target);
     return (
       <Image
         src={`https:${node.data.target.fields.file.url}`}

@@ -26,6 +26,7 @@ export type GetStaticPropsReturn = {
   props: {
     [key: string]: any;
   };
+  revalidate?: number;
 };
 
 export type GetStaticPathsReturn = {
