@@ -51,7 +51,6 @@ const index: React.FC<{ posts: Post[] }> = ({ posts }) => {
     const { title, coverImage, postContent, slug } = post.fields;
     const linkToPost = `/blog/posts/${slug}`;
     const imageLink = coverImage?.fields.file.url;
-    console.log('content', typeof postContent.content[0].content[0]);
 
     return (
       <Card

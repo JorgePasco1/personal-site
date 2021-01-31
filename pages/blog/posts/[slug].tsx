@@ -44,8 +44,8 @@ export const getStaticProps = async ({
 };
 
 const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
-  const { title, subtitle, postContent } = post?.fields;
-  const { createdAt: publicationDate } = post?.sys;
+  const { title, subtitle, postContent } = post.fields;
+  const { createdAt: publicationDate } = post.sys;
 
   const PostImage: React.FC<{ node: { [key: string]: any } }> = ({ node }) => {
     return (
@@ -73,12 +73,12 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
   };
 
   const CoverImage: React.FC<{ post: Post }> = ({ post }) => {
+    const imgSource = post.fields.coverImage
+      ? post.fields.coverImage.fields.file.url
+      : 'https://source.unsplash.com/random/800x500';
+
     return (
-      <img
-        className={styles['cover-photo']}
-        src={post.fields.coverImage.fields.file.url}
-        alt="Cover"
-      />
+      <img className={styles['cover-photo']} src={imgSource} alt="Cover" />
     );
   };
 
