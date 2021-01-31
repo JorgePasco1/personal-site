@@ -55,7 +55,6 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
   const { createdAt: publicationDate } = post.sys;
 
   const PostImage: React.FC<{ node: { [key: string]: any } }> = ({ node }) => {
-    console.log('node', node.data.target);
     return (
       <Image
         src={`https:${node.data.target.fields.file.url}`}
