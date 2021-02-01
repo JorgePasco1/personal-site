@@ -56,11 +56,13 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
 
   const PostImage: React.FC<{ node: { [key: string]: any } }> = ({ node }) => {
     return (
-      <Image
-        src={`https:${node.data.target.fields.file.url}`}
-        width={node.data.target.fields.file.details.image.width}
-        height={node.data.target.fields.file.details.image.height}
-      />
+      <div className={styles.postImageWrapper}>
+        <Image
+          src={`https:${node.data.target.fields.file.url}`}
+          width={node.data.target.fields.file.details.image.width}
+          height={node.data.target.fields.file.details.image.height}
+        />
+      </div>
     );
   };
 
