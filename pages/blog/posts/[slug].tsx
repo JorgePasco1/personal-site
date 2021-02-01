@@ -12,7 +12,7 @@ import {
   GetStaticPropsReturn,
   GetStaticPathsReturn,
 } from '../../../utils/types';
-import { getDateText } from '../../../utils/helpers';
+import { createDateText } from '../../../utils/helpers';
 
 import styles from './Post.module.scss';
 import { useRouter } from 'next/dist/client/router';
@@ -105,13 +105,13 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
   return (
     <div className="container">
       <Head>
-        <title>{title}| Jorge Pasco Blog</title>
+        <title>{title} | Jorge Pasco Blog</title>
       </Head>
       {post && <CoverImage post={post} />}
       <NavComponent />
       <div className={styles.post}>
-        <PillTag>{getDateText(new Date(publicationDate))}</PillTag>
-        <h1>{title}</h1>
+        <PillTag>{createDateText(new Date(publicationDate))}</PillTag>
+        <h1 className={styles.post__title}>{title}</h1>
         <div className={styles.post__subtitle}>{subtitle}</div>
         <PostContent />
       </div>

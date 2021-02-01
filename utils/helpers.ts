@@ -5,7 +5,7 @@ import {
   formatDistance,
 } from 'date-fns';
 
-export const getDateText = (date: Date): string => {
+export const createDateText = (date: Date): string => {
   const daysDifference = differenceInDays(new Date(), date);
   const yearsDifference = differenceInCalendarYears(new Date(), date);
   return Math.abs(daysDifference) > 7

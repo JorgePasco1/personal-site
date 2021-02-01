@@ -45,24 +45,32 @@ $header-height: 10vh;
   margin: 5vh auto 1vh auto;
 
   h1 {
-    font-size: calc(1rem + 2.5vh);
+    font-size: calc(1rem + 1.5vh);
     font-family: 'Montserrat';
     font-weight: 700;
     text-align: center;
     color: $dark-green;
     margin-bottom: 3rem;
   }
-}
 
-.card {
-  margin-bottom: 3rem;
+  .dateText {
+    margin-bottom: .5rem;
+    font-weight: 700;
+    color: $light-green;
+    font-family: Montserrat;
+    text-transform: capitalize;
+  }
 
-  a {
-    color: rgb(68, 68, 68);
-    transition: color 0.2s;
+  .card {
+    margin-bottom: 3rem;
 
-    &:hover {
-      color: $dark-green;
+    a {
+      color: rgb(68, 68, 68);
+      transition: color 0.2s;
+
+      &:hover {
+        color: $dark-green;
+      }
     }
   }
 }

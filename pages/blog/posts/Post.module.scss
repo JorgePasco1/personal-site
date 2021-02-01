@@ -35,7 +35,7 @@ $margin-bottom: 2.5rem;
   font-family: $content-font;
   font-weight: 400;
 
-  h1 {
+  &__title {
     font-family: $heading-font;
     font-weight: 700;
     font-size: 4rem;
@@ -50,15 +50,23 @@ $margin-bottom: 2.5rem;
     font-weight: 700;
     margin-top: 10px;
     margin-bottom: $margin-bottom;
+    line-height: 2.3rem;
+  }
+
+  & > * > * {
+    margin-bottom: $margin-bottom;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $heading-font;
+    color: $dark-green;
+    margin-bottom: 1rem;
   }
 
   p {
     font-size: 1.3rem;
   }
 
-  & > * > * {
-    margin-bottom: $margin-bottom;
-  }
 
   hr {
     border: 0;

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { Post, GetStaticPropsReturn } from '../../utils/types';
 import { fetchPosts } from '../../hooks/postsHooks';
-import { truncate } from '../../utils/helpers';
+import { truncate, createDateText } from '../../utils/helpers';
 
 import Card from '../../components/common/Card';
 import MenuOverlay from '../../components/common/MenuOverlay';
@@ -49,20 +49,25 @@ const index: React.FC<{ posts: Post[] }> = ({ posts }) => {
 
   const PostPreview: React.FC<{ post: Post }> = ({ post }) => {
     const { title, coverImage, postContent, slug } = post.fields;
+    const { createdAt: publicationDate } = post.sys;
+    const dateText = createDateText(new Date(publicationDate));
     const linkToPost = `/blog/posts/${slug}`;
     const imageLink = coverImage?.fields.file.url;
 
     return (
-      <Card
-        title={title}
-        description={
-          truncate((postContent.content[0].content[0] as Text).value, 150) +
-          '...'
-        }
-        link={linkToPost}
-        imageLink={imageLink}
-        className={styles.card}
-      />
+      <>
+        <div className={styles.dateText}>{dateText}</div>
+        <Card
+          title={title}
+          description={
+            truncate((postContent.content[0].content[0] as Text).value, 150) +
+            '...'
+          }
+          link={linkToPost}
+          imageLink={imageLink}
+          className={styles.card}
+        />
+      </>
     );
   };
 
