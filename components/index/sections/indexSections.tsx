@@ -36,7 +36,7 @@ export const Hero: React.FC<HeroProps> = ({ mainContentRef, styles }) => {
       />
       <div className={styles['left-section']}>
         <div
-          className={`${styles['left-section__tagline']} ${styles['fadein-animation-left']}`}
+          className={`${styles['left-section__tagline']} fadein-animation-left`}
         >
           I strive to create unique digital products, through{' '}
           <span className="main-yellow">creativity</span> and{' '}
