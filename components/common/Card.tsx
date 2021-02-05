@@ -4,7 +4,7 @@ type CardProps = {
   title: string;
   description: string;
   link: string;
-  imageLink: string;
+  imageLink?: string;
   className?: string;
 };
 
@@ -13,8 +13,9 @@ const Card: React.FC<CardProps> = ({
   description,
   link,
   imageLink,
-  className,
+  className = '',
 }: CardProps) => {
+  console.log(styles);
   return (
     <div className={`${styles.card} ${className}`}>
       <a href={link} className={styles.card__image_container}>
