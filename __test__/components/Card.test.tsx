@@ -3,16 +3,29 @@ import { render, screen } from '@testing-library/react';
 
 import Card from '../../components/common/Card';
 
+const createExampleCard = (): {
+  cardTitle: string;
+  cardDescription: string;
+  cardLink: string;
+} => {
+  const cardTitle = 'Test Card';
+  const cardDescription = 'This is a testing description';
+  const cardLink = 'https://jorgepasco.me';
+
+  return { cardTitle, cardDescription, cardLink };
+};
+
 describe('App', () => {
-  it('renders App Component', () => {
+  it('renders App Component without crashing', () => {
+    const { cardTitle, cardDescription, cardLink } = createExampleCard();
     render(
-      <Card
-        title="Test Card"
-        description="This is a testing description"
-        link="https://jorgepasco.me"
-      />
+      <Card title={cardTitle} description={cardDescription} link={cardLink} />
     );
 
-    screen.debug();
+    expect(screen.getByText(cardTitle)).toBeInTheDocument();
+    expect(screen.getByText(cardDescription)).toBeInTheDocument();
+    expect(screen.getAllByRole('link')).toHaveLength(2);
+    expect(screen.getByRole('img')).toBeInTheDocument();
+    expect(screen.getByAltText('Card Cover')).toBeInTheDocument();
   });
 });
