@@ -15,8 +15,8 @@ const createExampleCard = (): {
   return { cardTitle, cardDescription, cardLink };
 };
 
-describe('App', () => {
-  it('renders App Component without crashing', () => {
+describe('Card', () => {
+  it('renders Card Component without crashing', () => {
     const { cardTitle, cardDescription, cardLink } = createExampleCard();
     render(
       <Card title={cardTitle} description={cardDescription} link={cardLink} />

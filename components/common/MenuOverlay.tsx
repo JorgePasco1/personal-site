@@ -27,6 +27,7 @@ const MenuOverlay: React.FC<{ color?: 'dark' | 'light' }> = ({
       <div
         className={`${styles.overlay} ${overlayActive && styles.open}`}
         id={styles.overlay}
+        role="dialog"
       >
         <nav className={styles['overlay-menu']}>
           <ul>
