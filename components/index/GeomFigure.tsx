@@ -1,9 +1,9 @@
 import styles from './GeomFigure.module.scss';
 
 type GeomFigureProps = {
-  type: string;
+  type: 'triangle' | 'circle' | 'square';
   size: string;
-  color: string;
+  color: 'red' | 'cream' | 'purple' | 'green' | 'yellow';
   rotation?: string;
   animation?: {
     direction: 'clock' | 'counter';
@@ -44,6 +44,7 @@ const GeomFigure: React.FC<GeomFigureProps> = ({
 
   const TriangleSvg: React.FC = () => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245.46 220.12">
+      <title>Triangle SVG</title>
       <g id="Layer_2" data-name="Layer 2">
         <g id="Layer_1-2" data-name="Layer 1">
           <path
@@ -64,10 +65,12 @@ const GeomFigure: React.FC<GeomFigureProps> = ({
     <div
       className={rotationClass && styles[rotationClass]}
       style={figureContainerStyles}
+      title="GeomFigureContainer"
     >
       <div
         className={`${figureClassName} squash-animation`}
         style={figureStyles}
+        title="GeomFigure"
       >
         {type === 'triangle' && <TriangleSvg />}
       </div>

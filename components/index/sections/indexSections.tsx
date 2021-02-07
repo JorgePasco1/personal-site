@@ -25,7 +25,7 @@ export const Hero: React.FC<HeroProps> = ({ mainContentRef, styles }) => {
   };
 
   return (
-    <div className={styles['hero']}>
+    <div className={styles['hero']} data-testid="heroComponent">
       <div className={styles['menu-overlay-container']}>
         <MenuOverlay />
       </div>
@@ -33,6 +33,7 @@ export const Hero: React.FC<HeroProps> = ({ mainContentRef, styles }) => {
         name="angle down"
         className={`${styles['down-indicator']} bounce`}
         onClick={handleDownIndicatorClick}
+        data-testid="downArrow"
       />
       <div className={styles['left-section']}>
         <div
