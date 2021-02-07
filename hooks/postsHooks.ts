@@ -4,8 +4,8 @@ import { Post } from '../utils/types';
 const POST_CONTENT_TYPE = 'blogPost';
 
 const client = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN,
+  space: process.env.CONTENTFUL_SPACE_ID || 'test',
+  accessToken: process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN || 'test',
 });
 
 export const fetchPosts = async (): Promise<Post[]> => {

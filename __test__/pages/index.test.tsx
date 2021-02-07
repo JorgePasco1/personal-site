@@ -22,7 +22,7 @@ const exampleProjects: ProjectInfo[] = [
 ];
 
 describe('Home', () => {
-  it('renders without crasing', () => {
+  it('renders without crashing', () => {
     render(<Home projects={exampleProjects} />);
 
     expect(screen.getByTestId('heroComponent')).toBeInTheDocument();

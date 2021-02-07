@@ -18,6 +18,7 @@ const PillTag: React.FC<PillTagProps> = ({
         color: color,
         padding: '.5em 1em !important',
       }}
+      data-testid="pillTag"
     >
       {children}
     </Label>

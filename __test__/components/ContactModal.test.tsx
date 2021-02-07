@@ -13,10 +13,12 @@ const errorMessage =
   'Something went wrong sending your message. Please try again.';
 
 describe('ContactModal', () => {
-  it('renders ContactModal Component after clicking trigger button without crashing', () => {
+  beforeEach(() => {
     const TriggerButton = <button>Trigger</button>;
     render(<ContactModal triggerButton={TriggerButton} />);
+  });
 
+  it('renders ContactModal Component after clicking trigger button without crashing', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     userEvent.click(screen.getByRole('button'));
     expect(screen.queryByRole('dialog')).toBeInTheDocument();
@@ -29,9 +31,6 @@ describe('ContactModal', () => {
         return Promise.resolve();
       }
     );
-
-    const TriggerButton = <button>Trigger</button>;
-    render(<ContactModal triggerButton={TriggerButton} />);
 
     userEvent.click(screen.getByRole('button'));
     fireEvent(
@@ -62,9 +61,6 @@ describe('ContactModal', () => {
         return Promise.reject(new Error());
       }
     );
-
-    const TriggerButton = <button>Trigger</button>;
-    render(<ContactModal triggerButton={TriggerButton} />);
     userEvent.click(screen.getByRole('button'));
     userEvent.click(screen.getByText('Send'));
 

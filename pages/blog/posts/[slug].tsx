@@ -61,6 +61,7 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
           src={`https:${node.data.target.fields.file.url}`}
           width={node.data.target.fields.file.details.image.width}
           height={node.data.target.fields.file.details.image.height}
+          alt={node.data.target.fields.title}
         />
       </div>
     );

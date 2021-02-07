@@ -1,15 +1,16 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { Text } from '@contentful/rich-text-types';
 
 import { Post, GetStaticPropsReturn } from '../../utils/types';
 import { fetchPosts } from '../../hooks/postsHooks';
 import { truncate, createDateText } from '../../utils/helpers';
+import { POST_PREVIEW_DESCRIPTION_LENGTH } from '../../utils/constants';
 
 import Card from '../../components/common/Card';
 import MenuOverlay from '../../components/common/MenuOverlay';
 
 import styles from './blogIndex.module.scss';
-import { Text } from '@contentful/rich-text-types';
 
 export const getStaticProps = async (): Promise<GetStaticPropsReturn> => {
   const posts = await fetchPosts();
@@ -23,7 +24,7 @@ export const getStaticProps = async (): Promise<GetStaticPropsReturn> => {
 const index: React.FC<{ posts: Post[] }> = ({ posts }) => {
   const Header: React.FC = () => {
     return (
-      <header className={styles.header}>
+      <header className={styles.header} role="navigation">
         <img
           src="/assets/profile.png"
           className={styles['header__picture']}
@@ -59,10 +60,10 @@ const index: React.FC<{ posts: Post[] }> = ({ posts }) => {
         <div className={styles.dateText}>{dateText}</div>
         <Card
           title={title}
-          description={
-            truncate((postContent.content[0].content[0] as Text).value, 150) +
-            '...'
-          }
+          description={truncate(
+            (postContent.content[0].content[0] as Text).value,
+            POST_PREVIEW_DESCRIPTION_LENGTH
+          )}
           link={linkToPost}
           imageLink={imageLink}
           className={styles.card}
