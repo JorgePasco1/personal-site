@@ -1,7 +1,7 @@
 import { NextApiResponse, NextApiRequest } from 'next';
 
-import { getRecentProjects } from '../../../utils/gitHubAdapter';
-import { getImageLink } from '../../../utils/s3Adapter';
+import { getRecentProjects } from '../../../proxies/gitHubProxy';
+import { getImageLink } from '../../../proxies/s3Proxy';
 
 const recentProjects = async (
   req: NextApiRequest,

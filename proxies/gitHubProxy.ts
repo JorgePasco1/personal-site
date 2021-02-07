@@ -19,7 +19,7 @@ const extractProjectsUrls = (text: string): Array<string> => {
   return links.map((link) => link.split('https://github.com/')[1]);
 };
 
-const getRecentProjectsUrls = async (): Promise<Array<string>> => {
+export const getRecentProjectsUrls = async (): Promise<Array<string>> => {
   const profileReadmeUrl = `${BASE_GITHUB_API_URL}/repos/jorgepasco1/jorgepasco1/contents/README.md`;
 
   const response = await axios.get(profileReadmeUrl, {
@@ -35,7 +35,7 @@ const getRecentProjectsUrls = async (): Promise<Array<string>> => {
   return projectUrls;
 };
 
-const getProjectInfo = async (repoUrl: string): Promise<ProjectInfo> => {
+export const getProjectInfo = async (repoUrl: string): Promise<ProjectInfo> => {
   const response = await axios.get(repoUrl, {
     headers: {
       Authorization: `Bearer ${GH_ACCESS_TOKEN}`,

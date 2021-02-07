@@ -4,8 +4,8 @@ import { useRef } from 'react';
 import { ProjectInfo, GetStaticPropsReturn } from '../utils/types';
 import { Hero, MainContent } from '../components/index/sections/indexSections';
 
-import { getRecentProjects } from '../utils/gitHubAdapter';
-import { getImageLink } from '../utils/s3Adapter';
+import { getRecentProjects } from '../proxies/gitHubProxy';
+import { getImageLink } from '../proxies/s3Proxy';
 import styles from './index.module.scss';
 
 const Home: React.FC<{ projects: ProjectInfo[] }> = ({ projects }) => {

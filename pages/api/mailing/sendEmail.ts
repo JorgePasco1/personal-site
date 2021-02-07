@@ -1,5 +1,5 @@
 import { NextApiResponse, NextApiRequest } from 'next';
-import sendEmail from '../../../utils/mailerAdapter';
+import sendEmail from '../../../proxies/mailerProxy';
 
 const sendContactEmail = async (
   req: NextApiRequest,
