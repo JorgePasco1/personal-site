@@ -71,7 +71,7 @@
       "<rootDir>/__test__/setup.ts"
     ],
     "modulePathIgnorePatterns": [
-      "<rootDir>/__test__/utils"
+      "<rootDir>/__test__/^utils$/*"
     ]
   }
 }

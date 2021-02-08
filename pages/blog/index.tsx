@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Text } from '@contentful/rich-text-types';
 
 import { Post, GetStaticPropsReturn } from '../../utils/types';
-import { fetchPosts } from '../../hooks/postsHooks';
+import { fetchPosts } from '../../proxies/contentfulProxy';
 import { truncate, createDateText } from '../../utils/helpers';
 import { POST_PREVIEW_DESCRIPTION_LENGTH } from '../../utils/constants';
 

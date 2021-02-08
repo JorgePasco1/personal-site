@@ -24,8 +24,7 @@ const recentProjects = async (
     res.status(200).json({ data: projectsWithImage });
   } catch (error) {
     console.log(error);
-    res.statusCode = 500;
-    res.end('Something went wrong');
+    return res.status(500).end('Something Went Wrong');
   }
 };
 

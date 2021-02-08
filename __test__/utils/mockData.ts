@@ -3257,3 +3257,31 @@ export const examplePosts = [
     },
   },
 ];
+
+export const getSampleDates = (): { [key: string]: Date } => {
+  const today = new Date();
+  const tenMinAgo = new Date(today);
+  tenMinAgo.setMinutes(tenMinAgo.getMinutes() - 10);
+  const twoHoursAgo = new Date(today);
+  twoHoursAgo.setHours(twoHoursAgo.getHours() - 2);
+  const yesterday = new Date(today);
+  yesterday.setDate(yesterday.getDate() - 1);
+  const oneWeekAgo = new Date(today);
+  oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+  const janOneThisYear = new Date(new Date().getFullYear(), 0, 1);
+  const oneYearAgo = new Date(today);
+  oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+
+  return {
+    today,
+    tenMinAgo,
+    twoHoursAgo,
+    yesterday,
+    oneWeekAgo,
+    janOneThisYear,
+    oneYearAgo,
+  };
+};
+
+export const sampleText =
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis dolorem, sed numquam vel illo ad magnam voluptates unde totam doloremque saepe eum enim, quibusdam ipsa velit, incidunt ullam. Voluptatibus, expedita.Architecto voluptate consequatur ipsam mollitia velit, quaerat temporibus laborum voluptatibus quisquam perferendis dolorem? Voluptatem at molestias consequatur provident debitis odit enim laudantium, itaque fuga possimus, cum iusto velit inventore incidunt!';

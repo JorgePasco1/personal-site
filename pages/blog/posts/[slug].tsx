@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Icon } from 'semantic-ui-react';
 
 import PillTag from '../../../components/blog/PillTag';
-import { fetchPosts, fetchSinglePost } from '../../../hooks/postsHooks';
+import { fetchPosts, fetchSinglePost } from '../../../proxies/contentfulProxy';
 import {
   Post,
   GetStaticPropsReturn,

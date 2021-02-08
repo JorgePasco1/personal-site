@@ -51,7 +51,6 @@ describe('getRecentProjects', () => {
 
   it('should return 500 when something goes wrong with the request', async () => {
     mockedGetRecentProjects.mockReturnValue(Promise.reject());
-    mockedGetImageLink.mockReturnValue(Promise.reject());
     const { req, res } = createMocks({
       method: 'GET',
     });
