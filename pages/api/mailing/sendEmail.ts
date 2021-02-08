@@ -9,6 +9,9 @@ const sendContactEmail = async (
     return res.status(405).end('Method Not Allowed');
   }
 
+  if (!req.body?.contactDetails)
+    return res.status(400).end('Missing contactDetails');
+
   const body = req.body;
   const contactDetails = body.contactDetails;
 

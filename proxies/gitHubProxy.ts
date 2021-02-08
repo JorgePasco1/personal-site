@@ -2,7 +2,7 @@ import axios from 'axios';
 import { ProjectInfo } from '../utils/types';
 import { BASE_GITHUB_API_URL } from '../utils/constants';
 
-const GH_ACCESS_TOKEN = process.env.GH_ACCESS_TOKEN;
+const GH_ACCESS_TOKEN = process.env.GH_ACCESS_TOKEN || 'GH.test';
 
 const extractProjectsUrls = (text: string): Array<string> => {
   const recentProjects = text

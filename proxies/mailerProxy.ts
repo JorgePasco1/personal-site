@@ -1,6 +1,8 @@
 import sgMail from '@sendgrid/mail';
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+import { SendGridResponse } from '../utils/types';
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY || 'SG.test');
 
 type MailDetails = {
   sender_name: string;
@@ -8,12 +10,16 @@ type MailDetails = {
   message: string;
 };
 
-const sendEmail = async (senderDetails: MailDetails): Promise<any> => {
+type SendEmailReturn = Promise<
+  [SendGridResponse, unknown] | (string | SendGridResponse)[]
+>;
+
+const sendEmail = async (mailDetails: MailDetails): SendEmailReturn => {
   const msg = {
-    to: process.env.GMAIL_USER,
-    from: process.env.GMAIL_USER,
-    subject: `[Personal Site] New Message from ${senderDetails.sender_name}(${senderDetails.sender_email})`,
-    text: senderDetails.message,
+    to: process.env.GMAIL_USER || 'SG.test',
+    from: process.env.GMAIL_USER || 'SG.test',
+    subject: `[Personal Site] New Message from ${mailDetails.sender_name}(${mailDetails.sender_email})`,
+    text: mailDetails.message,
   };
 
   try {
