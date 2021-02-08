@@ -13,5 +13,8 @@ export const createDateText = (date: Date): string => {
     : `${formatDistance(date, new Date())} ago`;
 };
 
-export const truncate = (text: string, length: number): string =>
-  text.length > length ? `${text.substr(0, length - 1)}` : text;
+export const truncate = (text: string, length: number): string => {
+  const truncated =
+    text.length > length ? `${text.substr(0, length - 1)}` : text;
+  return truncated + '...';
+};

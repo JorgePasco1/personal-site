@@ -1,9 +1,8 @@
 import axios from 'axios';
-
-const BASE_GITHUB_API_URL = 'https://api.github.com';
-const GH_ACCESS_TOKEN = process.env.GH_ACCESS_TOKEN;
-
 import { ProjectInfo } from '../utils/types';
+import { BASE_GITHUB_API_URL } from '../utils/constants';
+
+const GH_ACCESS_TOKEN = process.env.GH_ACCESS_TOKEN || 'GH.test';
 
 const extractProjectsUrls = (text: string): Array<string> => {
   const recentProjects = text
@@ -20,7 +19,7 @@ const extractProjectsUrls = (text: string): Array<string> => {
   return links.map((link) => link.split('https://github.com/')[1]);
 };
 
-const getRecentProjectsUrls = async (): Promise<Array<string>> => {
+export const getRecentProjectsUrls = async (): Promise<Array<string>> => {
   const profileReadmeUrl = `${BASE_GITHUB_API_URL}/repos/jorgepasco1/jorgepasco1/contents/README.md`;
 
   const response = await axios.get(profileReadmeUrl, {
@@ -36,7 +35,7 @@ const getRecentProjectsUrls = async (): Promise<Array<string>> => {
   return projectUrls;
 };
 
-const getProjectInfo = async (repoUrl: string): Promise<ProjectInfo> => {
+export const getProjectInfo = async (repoUrl: string): Promise<ProjectInfo> => {
   const response = await axios.get(repoUrl, {
     headers: {
       Authorization: `Bearer ${GH_ACCESS_TOKEN}`,

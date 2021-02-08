@@ -16,7 +16,7 @@ const Card: React.FC<CardProps> = ({
   className = '',
 }: CardProps) => {
   return (
-    <div className={`${styles.card} ${className}`}>
+    <div className={`${styles.card} ${className}`} data-testid="cardComponent">
       <a href={link} className={styles.card__image_container}>
         <img
           src={imageLink || 'https://source.unsplash.com/random/800x500'}

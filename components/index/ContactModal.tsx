@@ -43,6 +43,8 @@ const ContactModal: React.FC<ContactModalProps> = ({
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       dimmer="blurring"
+      role="dialog"
+      data-testid="contactModalComponent"
     >
       <Header content="Let's get in touch 🙌" />
       <Modal.Content>
@@ -52,6 +54,7 @@ const ContactModal: React.FC<ContactModalProps> = ({
             success={formState === FormState.SUCCESS}
             error={formState === FormState.ERROR}
             loading={formState === FormState.LOADING}
+            role="form"
           >
             <Form.Group widths="equal">
               <Form.Field

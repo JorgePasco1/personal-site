@@ -1,5 +1,5 @@
 import { NextApiResponse, NextApiRequest } from 'next';
-import sendEmail from '../../../utils/mailerAdapter';
+import sendEmail from '../../../proxies/mailerProxy';
 
 const sendContactEmail = async (
   req: NextApiRequest,
@@ -8,6 +8,9 @@ const sendContactEmail = async (
   if (req.method !== 'POST') {
     return res.status(405).end('Method Not Allowed');
   }
+
+  if (!req.body?.contactDetails)
+    return res.status(400).end('Missing contactDetails');
 
   const body = req.body;
   const contactDetails = body.contactDetails;

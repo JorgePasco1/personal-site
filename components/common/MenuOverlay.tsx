@@ -19,6 +19,7 @@ const MenuOverlay: React.FC<{ color?: 'dark' | 'light' }> = ({
         onKeyDown={() => setOverlayActive(!overlayActive)}
         role="button"
         tabIndex={0}
+        data-testid="overlayMenuButton"
       >
         <span className={styles.top}></span>
         <span className={styles.middle}></span>
@@ -28,6 +29,7 @@ const MenuOverlay: React.FC<{ color?: 'dark' | 'light' }> = ({
         className={`${styles.overlay} ${overlayActive && styles.open}`}
         id={styles.overlay}
         role="dialog"
+        data-testid="overlayMenuComponent"
       >
         <nav className={styles['overlay-menu']}>
           <ul>
