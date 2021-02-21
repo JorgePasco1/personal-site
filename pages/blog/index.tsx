@@ -40,7 +40,7 @@ const index: React.FC<{ posts: Post[] }> = ({ posts }) => {
         >
           Work
         </a>
-        <a className={styles.active}>Blog</a>
+        <button className={`unstyled-button ${styles.active}`}>Blog</button>
         <div className={styles['menu-overlay-container']}>
           <MenuOverlay color="dark" />
         </div>
@@ -76,7 +76,18 @@ const index: React.FC<{ posts: Post[] }> = ({ posts }) => {
     <>
       <Head>
         <title>Jorge Pasco | Blog</title>
-        <link rel="icon" href="blog-favicon.ico" />
+        <meta
+          name="keyword"
+          content="portfolio, javascript, developer, engineer, software, backend, frontend, blog, blogging"
+        />
+        <meta
+          name="description"
+          content="Jorge Pasco's Software Development Blog"
+        />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta property="og:title" content="Jorge Pasco | Blog" />
+        <meta property="og:url" content="https://www.jorgepasco.me" />
+        <meta property="og:type" content="blog" />
       </Head>
       <Header />
       <main className={styles.main}>

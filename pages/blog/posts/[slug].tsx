@@ -51,17 +51,18 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
   if (router.isFallback) {
     return <h1>Post not found</h1>;
   }
-  const { title, subtitle, postContent } = post.fields;
+  const { title, subtitle, postContent, coverImage } = post.fields;
   const { createdAt: publicationDate } = post.sys;
 
   const PostImage: React.FC<{ node: { [key: string]: any } }> = ({ node }) => {
+    const { fields } = node.data.target;
     return (
       <div className={styles.postImageWrapper}>
         <Image
-          src={`https:${node.data.target.fields.file.url}`}
-          width={node.data.target.fields.file.details.image.width}
-          height={node.data.target.fields.file.details.image.height}
-          alt={node.data.target.fields.title}
+          src={`https:${fields.file.url}`}
+          width={fields.file.details.image.width}
+          height={fields.file.details.image.height}
+          alt={fields.title}
         />
       </div>
     );
@@ -82,9 +83,9 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
     );
   };
 
-  const CoverImage: React.FC<{ post: Post }> = ({ post }) => {
-    const imgSource = post.fields.coverImage
-      ? post.fields.coverImage.fields.file.url
+  const CoverImage: React.FC = () => {
+    const imgSource = coverImage
+      ? coverImage.fields.file.url
       : 'https://source.unsplash.com/random/800x500';
 
     return (
@@ -109,15 +110,26 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
     <div className="container">
       <Head>
         <title>{title} | Jorge Pasco Blog</title>
+        <meta
+          name="keyword"
+          content="portfolio, javascript, developer, engineer, software, backend, frontend"
+        />
+        <meta name="description" content={subtitle} />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta property="og:title" content={title} />
+        <meta property="og:url" content="https://www.jorgepasco.me" />
+        <meta property="og:type" content="blog.post" />
+        <meta property="og:image" content={coverImage?.fields.file.url} />
+        <meta property="og:image:alt" content="Blog Post Cover" />
       </Head>
-      {post && <CoverImage post={post} />}
+      <CoverImage />
       <NavComponent />
-      <div className={styles.post}>
+      <main className={styles.post}>
         <PillTag>{createDateText(new Date(publicationDate))}</PillTag>
         <h1 className={styles.post__title}>{title}</h1>
         <div className={styles.post__subtitle}>{subtitle}</div>
         <PostContent />
-      </div>
+      </main>
     </div>
   );
 };
