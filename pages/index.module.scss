@@ -36,7 +36,7 @@
     &__tagline {
       margin-left: -6rem;
       width: 50%;
-      font-family: 'Montserrat';
+      font-family: $montserrat;
       font-weight: 600;
       font-size: 3vw;
       color: $mint-cream;
@@ -59,7 +59,7 @@
       justify-content: space-between;
       z-index: 2;
       &__item {
-        font-family: 'Montserrat';
+        font-family: $montserrat;
         font-weight: 600;
         font-size: calc(1rem + .3vw);
         color: $dark-purple;
@@ -82,7 +82,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-family: 'Montserrat';
+      font-family: $montserrat;
       flex-grow: 1;
       z-index: 2;
 
@@ -144,7 +144,7 @@
 
   .introduction {
     h1 {
-      font-family: 'Montserrat';
+      font-family: $montserrat;
       font-size: 3rem;
       font-weight: 700;
       margin-bottom: 2rem;
@@ -156,7 +156,7 @@
 
       a,
       button {
-        color: $red-crayola;
+        color: $mid-red-crayola;
         text-decoration: underline;
         transition: color 0.2s;
 
@@ -169,7 +169,7 @@
 
   .projects {
     h2 {
-      font-family: 'Montserrat';
+      font-family: $montserrat;
       font-size: 2rem;
       margin-bottom: 4rem;
     }
@@ -192,9 +192,9 @@
         width: fit-content;
         margin-right: 0;
         align-self: center;
-        color: $red-crayola;
+        color: $mid-red-crayola;
         font-weight: 700;
-        font-family: 'Montserrat';
+        font-family: $montserrat;
         transition: color 0.2s;
       }
 
@@ -215,7 +215,7 @@
     color: $mint-cream;
     justify-content: center;
     align-items: center;
-    font-family: 'Montserrat';
+    font-family: $montserrat;
     font-weight: 700;
     padding: 4vh 0;
     font-size: .8rem;
@@ -289,11 +289,12 @@
 
         img {
           width: 2vh;
+          min-width: 20px;
           height: auto;
         }
 
         a:first-child {
-          margin-right: 1rem;
+          margin-right: 2rem;
         }
       }
     }

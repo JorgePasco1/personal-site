@@ -26,7 +26,7 @@ const index: React.FC<{ posts: Post[] }> = ({ posts }) => {
     return (
       <header className={styles.header} role="navigation">
         <img
-          src="/assets/profile.png"
+          src="/assets/profile.webp"
           className={styles['header__picture']}
           alt="Profile"
         ></img>

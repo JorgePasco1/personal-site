@@ -15,7 +15,16 @@ const Home: React.FC<{ projects: ProjectInfo[] }> = ({ projects }) => {
     <>
       <Head>
         <title>Jorge Pasco</title>
+        <meta name="description" content="Software Engineer Portfolio" />
+        <meta
+          name="keyword"
+          content="portfolio, javascript, developer, engineer, software, backend, frontend"
+        />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta property="og:title" content="Jorge Pasco | Software Engineer" />
+        <meta property="og:description" content="Software Engineer Portfolio" />
+        <meta property="og:url" content="https://www.jorgepasco.me" />
+        <meta property="og:type" content="website" />
       </Head>
 
       <Hero mainContentRef={mainContentRef} styles={styles} />

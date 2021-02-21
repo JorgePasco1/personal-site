@@ -20,6 +20,7 @@ const MenuOverlay: React.FC<{ color?: 'dark' | 'light' }> = ({
         role="button"
         tabIndex={0}
         data-testid="overlayMenuButton"
+        aria-label="Open Menu"
       >
         <span className={styles.top}></span>
         <span className={styles.middle}></span>

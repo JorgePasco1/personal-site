@@ -7,7 +7,7 @@ $header-height: 10vh;
   position: relative;
   display: flex;
   align-items: center;
-  font-family: 'Montserrat', serif;
+  font-family: $montserrat;
   background-color: rgba(238, 238, 238, 0.582);
 
   .menu-overlay-container {
@@ -46,7 +46,7 @@ $header-height: 10vh;
 
   h1 {
     font-size: calc(1rem + 1.5vh);
-    font-family: 'Montserrat';
+    font-family: $montserrat;
     font-weight: 700;
     text-align: center;
     color: $dark-green;
@@ -57,7 +57,7 @@ $header-height: 10vh;
     margin-bottom: .5rem;
     font-weight: 700;
     color: $light-green;
-    font-family: Montserrat;
+    font-family: $montserrat;
     text-transform: capitalize;
   }
 
