@@ -34,6 +34,7 @@ export const Hero: React.FC<HeroProps> = ({ mainContentRef, styles }) => {
         className={`${styles['down-indicator']} bounce`}
         onClick={handleDownIndicatorClick}
         data-testid="downArrow"
+        aria-label="Go to Main Content"
       />
       <div className={styles['left-section']}>
         <div
@@ -66,7 +67,7 @@ export const Hero: React.FC<HeroProps> = ({ mainContentRef, styles }) => {
           </Link>
         </div>
         <div className={`${styles['profile']} fadein-animation-top}`}>
-          <img src="/assets/profile.png" alt="Profile"></img>
+          <img src="/assets/profile.webp" alt="Profile"></img>
           <div className={styles['profile__name']}>Jorge Pasco</div>
           <div className={styles['profile__title']}>Software Engineer</div>
         </div>
