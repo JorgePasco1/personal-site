@@ -6,7 +6,7 @@ type PillTagProps = {
 };
 
 const PillTag: React.FC<PillTagProps> = ({
-  backgroundColor = '#ed254e',
+  backgroundColor = '#e0002d',
   color = 'white',
   children,
 }) => {
