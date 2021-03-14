@@ -25,18 +25,23 @@ const index: React.FC<{ posts: Post[] }> = ({ posts }) => {
   const Header: React.FC = () => {
     return (
       <header className={styles.header} role="navigation">
-        <img
-          src="/assets/profile.webp"
-          className={styles['header__picture']}
-          alt="Profile"
-        ></img>
         <Link href="/">
-          <a>About</a>
+          <a className={styles['header__pictureLink']}>
+            <img
+              src="/assets/profile.webp"
+              className={styles['header__picture']}
+              alt="Profile"
+            ></img>
+          </a>
+        </Link>
+        <Link href="/">
+          <a className={styles.navLink}>About</a>
         </Link>
         <a
           href="https://github.com/JorgePasco1/project-tree"
           target="_blank"
           rel="noreferrer"
+          className={styles.navLink}
         >
           Work
         </a>

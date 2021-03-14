@@ -25,6 +25,7 @@ const MenuOverlay: React.FC<{ color?: 'dark' | 'light' }> = ({
         <span className={styles.top}></span>
         <span className={styles.middle}></span>
         <span className={styles.bottom}></span>
+        <span className={styles.pseudo_bottom}></span>
       </div>
       <div
         className={`${styles.overlay} ${overlayActive && styles.open}`}
