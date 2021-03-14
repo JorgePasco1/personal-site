@@ -16,10 +16,14 @@ $header-height: 10vh;
     display: none;
   }
 
-  &__picture {
+  &__pictureLink {
     height: 50%;
-    border-radius: 50%;
     margin-left: 4rem;
+  }
+
+  &__picture {
+    height: 100%;
+    border-radius: 50%;
   }
 
   & > a,
@@ -46,7 +50,6 @@ $header-height: 10vh;
   width: 60vw;
   max-width: 40rem;
   margin: 5vh auto 1vh auto;
-  height: 1000vh;
 
   h1 {
     font-size: calc(1rem + 1.5vh);
@@ -81,7 +84,8 @@ $header-height: 10vh;
 
 @media (orientation: portrait) {
   .header {
-    a, button {
+    a.navLink,
+    button {
       display: none;
     }
 
