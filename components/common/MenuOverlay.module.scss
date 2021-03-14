@@ -3,12 +3,12 @@
 $color-active: $dark-green;
 $color-link: $dark-purple;
 
-$button-height: 1rem;
+$button-height: 18px;
 $button-width: 1.5rem;
 
 .button_container {
   display: none;
-  position: absolute;
+  position: fixed;
   height: $button-height;
   width: $button-width;
   cursor: pointer;
@@ -16,14 +16,19 @@ $button-width: 1.5rem;
   transition: opacity 0.25s ease;
 
   &.light {
-    .top, .middle, .bottom {
+    background-color: $dark-green;
+    .top,
+    .middle,
+    .bottom {
       background-color: #f4fffd;
     }
   }
 
   &.dark {
-    .top, .middle, .bottom {
-      background-color: #202020;
+    .top,
+    .middle,
+    .bottom {
+      background-color: $dark-green;
     }
   }
 
@@ -32,8 +37,9 @@ $button-width: 1.5rem;
   }
 
   &.active {
+    background-color: unset;
     .top {
-      transform: translateY(.45rem) translateX(0) rotate(45deg);
+      transform: translateY(0.45rem) translateX(0) rotate(45deg);
       background: $color-active;
     }
     .middle {
@@ -42,16 +48,15 @@ $button-width: 1.5rem;
     }
 
     .bottom {
-      transform: translateY(-.45rem) translateX(0) rotate(-45deg);
+      transform: translateY(-0.45rem) translateX(0) rotate(-45deg);
       background: $color-active;
     }
   }
 
   span {
-    background: $mint-cream;
     border: none;
     height: 3px;
-    width: 100%;
+    width: 105%;
     position: absolute;
     top: 0;
     left: 0;
@@ -64,6 +69,10 @@ $button-width: 1.5rem;
 
     &:nth-of-type(3) {
       top: 12px;
+    }
+
+    &:nth-of-type(4) {
+      top: 18px;
     }
   }
 }

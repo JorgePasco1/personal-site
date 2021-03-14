@@ -5,11 +5,12 @@ $header-height: 10vh;
 .header {
   height: $header-height;
   min-height: 6rem;
-  position: relative;
+  position: sticky;
+  top: 0;
   display: flex;
   align-items: center;
   font-family: $montserrat;
-  background-color: rgba(238, 238, 238, 0.582);
+  background-color: rgb(241, 241, 241);
 
   .menu-overlay-container {
     display: none;
@@ -45,6 +46,7 @@ $header-height: 10vh;
   width: 60vw;
   max-width: 40rem;
   margin: 5vh auto 1vh auto;
+  height: 1000vh;
 
   h1 {
     font-size: calc(1rem + 1.5vh);
