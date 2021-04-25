@@ -54,6 +54,7 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
   const { title, subtitle, postContent, coverImage } = post.fields;
   const { createdAt: publicationDate } = post.sys;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const PostImage: React.FC<{ node: { [key: string]: any } }> = ({ node }) => {
     const { fields } = node.data.target;
     return (
