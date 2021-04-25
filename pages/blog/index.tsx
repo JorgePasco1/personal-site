@@ -4,8 +4,7 @@ import { Text } from '@contentful/rich-text-types';
 
 import { Post, GetStaticPropsReturn } from '../../utils/types';
 import { fetchPosts } from '../../proxies/contentfulProxy';
-import { truncate, createDateText } from '../../utils/helpers';
-import { POST_PREVIEW_DESCRIPTION_LENGTH } from '../../utils/constants';
+import { createDateText, getPreviewText } from '../../utils/helpers';
 
 import Card from '../../components/common/Card';
 import MenuOverlay from '../../components/common/MenuOverlay';
@@ -65,9 +64,8 @@ const index: React.FC<{ posts: Post[] }> = ({ posts }) => {
         <div className={styles.dateText}>{dateText}</div>
         <Card
           title={title}
-          description={truncate(
-            (postContent.content[0].content[0] as Text).value,
-            POST_PREVIEW_DESCRIPTION_LENGTH
+          description={getPreviewText(
+            postContent?.content[0]?.content as Text[]
           )}
           link={linkToPost}
           imageLink={imageLink}

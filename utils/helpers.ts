@@ -4,6 +4,8 @@ import {
   differenceInCalendarYears,
   formatDistance,
 } from 'date-fns';
+import { Text } from '@contentful/rich-text-types';
+import { POST_PREVIEW_DESCRIPTION_LENGTH } from './constants';
 
 export const createDateText = (date: Date): string => {
   const daysDifference = differenceInDays(new Date(), date);
@@ -18,3 +20,9 @@ export const truncate = (text: string, length: number): string => {
     text.length > length ? `${text.substr(0, length - 1)}` : text;
   return truncated + '...';
 };
+
+export const getPreviewText = (fullContent: Text[]): string =>
+  truncate(
+    fullContent.reduce((acc: string, node: Text) => acc + node.value, ''),
+    POST_PREVIEW_DESCRIPTION_LENGTH
+  );
