@@ -107,6 +107,8 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
     );
   };
 
+  console.log(coverImage?.fields.file.url);
+
   return (
     <div className="container">
       <Head>
@@ -120,7 +122,10 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
         <meta property="og:title" content={title} />
         <meta property="og:url" content="https://www.jorgepasco.me" />
         <meta property="og:type" content="blog.post" />
-        <meta property="og:image" content={coverImage?.fields.file.url} />
+        <meta
+          property="og:image"
+          content={`https://${coverImage?.fields.file.url}`}
+        />
         <meta property="og:image:alt" content="Blog Post Cover" />
       </Head>
       <CoverImage />
