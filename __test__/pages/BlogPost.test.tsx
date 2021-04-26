@@ -33,7 +33,7 @@ describe('Blog Post', () => {
   });
 
   it('shows a tag with the correct date info', () => {
-    const { createdAt: publicationDate } = blogPost.sys;
+    const { updatedAt: publicationDate } = blogPost.sys;
     const dateText = createDateText(new Date(publicationDate));
     expect(screen.getByTestId('pillTag')).toHaveTextContent(dateText);
   });
