@@ -4,8 +4,7 @@ import { Text } from '@contentful/rich-text-types';
 
 import { Post, GetStaticPropsReturn } from '../../utils/types';
 import { fetchPosts } from '../../proxies/contentfulProxy';
-import { truncate, createDateText } from '../../utils/helpers';
-import { POST_PREVIEW_DESCRIPTION_LENGTH } from '../../utils/constants';
+import { createDateText, getPreviewText } from '../../utils/helpers';
 
 import Card from '../../components/common/Card';
 import MenuOverlay from '../../components/common/MenuOverlay';
@@ -25,18 +24,23 @@ const index: React.FC<{ posts: Post[] }> = ({ posts }) => {
   const Header: React.FC = () => {
     return (
       <header className={styles.header} role="navigation">
-        <img
-          src="/assets/profile.webp"
-          className={styles['header__picture']}
-          alt="Profile"
-        ></img>
         <Link href="/">
-          <a>About</a>
+          <a className={styles['header__pictureLink']}>
+            <img
+              src="/assets/profile.webp"
+              className={styles['header__picture']}
+              alt="Profile"
+            ></img>
+          </a>
+        </Link>
+        <Link href="/">
+          <a className={styles.navLink}>About</a>
         </Link>
         <a
           href="https://github.com/JorgePasco1/project-tree"
           target="_blank"
           rel="noreferrer"
+          className={styles.navLink}
         >
           Work
         </a>
@@ -50,7 +54,7 @@ const index: React.FC<{ posts: Post[] }> = ({ posts }) => {
 
   const PostPreview: React.FC<{ post: Post }> = ({ post }) => {
     const { title, coverImage, postContent, slug } = post.fields;
-    const { createdAt: publicationDate } = post.sys;
+    const { updatedAt: publicationDate } = post.sys;
     const dateText = createDateText(new Date(publicationDate));
     const linkToPost = `/blog/posts/${slug}`;
     const imageLink = coverImage?.fields.file.url;
@@ -60,9 +64,8 @@ const index: React.FC<{ posts: Post[] }> = ({ posts }) => {
         <div className={styles.dateText}>{dateText}</div>
         <Card
           title={title}
-          description={truncate(
-            (postContent.content[0].content[0] as Text).value,
-            POST_PREVIEW_DESCRIPTION_LENGTH
+          description={getPreviewText(
+            postContent?.content[0]?.content as Text[]
           )}
           link={linkToPost}
           imageLink={imageLink}
