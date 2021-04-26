@@ -120,7 +120,10 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
         <meta name="description" content={subtitle} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:title" content={title} />
-        <meta property="og:url" content="https://www.jorgepasco.me" />
+        <meta
+          property="og:url"
+          content={`https://www.jorgepasco.me/blog/posts/${post.fields.slug}`}
+        />
         <meta property="og:type" content="blog.post" />
         <meta
           property="og:image"
