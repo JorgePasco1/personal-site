@@ -3,9 +3,11 @@ import { BLOCKS } from '@contentful/rich-text-types';
 import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/dist/client/router';
 import { Icon } from 'semantic-ui-react';
 
 import PillTag from '../../../components/blog/PillTag';
+import { BlogMetaTags } from '../../../components/common/MetaTags';
 import { fetchPosts, fetchSinglePost } from '../../../proxies/contentfulProxy';
 import {
   Post,
@@ -15,7 +17,6 @@ import {
 import { createDateText } from '../../../utils/helpers';
 
 import styles from './Post.module.scss';
-import { useRouter } from 'next/dist/client/router';
 
 export const getStaticPaths = async (): Promise<GetStaticPathsReturn> => {
   const posts = await fetchPosts();
@@ -107,29 +108,15 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
     );
   };
 
-  console.log(`https:${coverImage?.fields.file.url}`);
-
   return (
     <div className="container">
       <Head>
-        <title>{title} | Jorge Pasco Blog</title>
-        <meta
-          name="keyword"
-          content="portfolio, javascript, developer, engineer, software, backend, frontend"
+        <BlogMetaTags
+          title={title}
+          subtitle={subtitle}
+          slug={post.fields.slug}
+          coverImage={coverImage}
         />
-        <meta name="description" content={subtitle} />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta property="og:title" content={title} />
-        <meta
-          property="og:url"
-          content={`https://www.jorgepasco.me/blog/posts/${post.fields.slug}`}
-        />
-        <meta property="og:type" content="blog.post" />
-        <meta
-          property="og:image"
-          content={`https:${coverImage?.fields.file.url}`}
-        />
-        <meta property="og:image:alt" content="Blog Post Cover" />
       </Head>
       <CoverImage />
       <NavComponent />
