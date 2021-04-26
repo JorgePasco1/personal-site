@@ -54,7 +54,7 @@ const index: React.FC<{ posts: Post[] }> = ({ posts }) => {
 
   const PostPreview: React.FC<{ post: Post }> = ({ post }) => {
     const { title, coverImage, postContent, slug } = post.fields;
-    const { createdAt: publicationDate } = post.sys;
+    const { updatedAt: publicationDate } = post.sys;
     const dateText = createDateText(new Date(publicationDate));
     const linkToPost = `/blog/posts/${slug}`;
     const imageLink = coverImage?.fields.file.url;
