@@ -107,6 +107,8 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
     );
   };
 
+  console.log(`https:${coverImage?.fields.file.url}`);
+
   return (
     <div className="container">
       <Head>
