@@ -52,7 +52,7 @@ const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
     return <h1>Post not found</h1>;
   }
   const { title, subtitle, postContent, coverImage } = post.fields;
-  const { createdAt: publicationDate } = post.sys;
+  const { updatedAt: publicationDate } = post.sys;
 
   const PostImage: React.FC<{ node: { [key: string]: any } }> = ({ node }) => {
     const { fields } = node.data.target;
