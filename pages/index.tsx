@@ -49,7 +49,7 @@ export const getStaticProps = async (): Promise<GetStaticPropsReturn> => {
     })
   );
 
-  return { props: { projects } };
+  return { props: { projects }, revalidate: 60 * 60 * 24 };
 };
 
 export default Home;
