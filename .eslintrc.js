@@ -6,6 +6,7 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
+    'plugin:storybook/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -19,7 +20,9 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': [
       2,
-      { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+      {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
     ],
   },
   overrides: [
@@ -27,7 +30,11 @@ module.exports = {
     {
       files: ['**/*.ts', '**/*.tsx'],
       parser: '@typescript-eslint/parser',
-      settings: { react: { version: 'detect' } },
+      settings: {
+        react: {
+          version: 'detect',
+        },
+      },
       env: {
         browser: true,
         node: true,
@@ -58,7 +65,13 @@ module.exports = {
             allowConciseArrowFunctionExpressionsStartingWithVoid: true,
           },
         ],
-        'prettier/prettier': ['error', {}, { usePrettierrc: true }], // Includes .prettierrc.js rules
+        'prettier/prettier': [
+          'error',
+          {},
+          {
+            usePrettierrc: true,
+          },
+        ], // Includes .prettierrc.js rules
       },
     },
   ],
