@@ -19,7 +19,7 @@
     "@contentful/rich-text-react-renderer": "^14.1.2",
     "@contentful/rich-text-types": "^14.1.2",
     "@sendgrid/mail": "^7.4.2",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "contentful": "^8.1.7",
     "date-fns": "^2.16.1",
     "next": "10.0.5",
